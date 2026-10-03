@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Yeonny Arcade</title>
-<meta name="description" content="내가 만든 게임 모음. 명예의 전당과 대표 게임 6개.">
+<meta name="description" content="내가 만든 게임 모음. 명예의 전당과 대표 게임, 게임마다 상세 설명.">
 <meta name="theme-color" content="#07060d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@ body{padding:0 16px 48px;background:
   radial-gradient(900px 420px at 50% -80px,rgba(255,61,240,.22),transparent 70%),
   linear-gradient(var(--bg),#0b0720 60%,var(--bg))}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1040px;margin:0 auto}
+.wrap{max-width:1100px;margin:0 auto}
 header{padding:56px 0 28px;text-align:center}
 .logo{font-family:'Black Han Sans','Malgun Gothic',sans-serif;font-size:clamp(40px,8vw,84px);line-height:1.05;letter-spacing:2px;color:#fff;text-shadow:0 0 10px var(--cy),0 0 34px var(--mg)}
 .sub{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.5em;color:var(--mg);font-size:clamp(10px,2vw,15px);margin-top:10px;text-indent:.5em}
@@ -25,21 +25,26 @@ header{padding:56px 0 28px;text-align:center}
 h2{font-family:'Orbitron','Noto Sans KR',sans-serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--mu);margin:34px 0 14px;display:flex;align-items:center;gap:12px}
 h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
 h2 b{color:var(--ye);font-weight:700}
-.grid{display:grid;gap:14px}
-.hof{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}
-.games{grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
-.card{position:relative;display:flex;flex-direction:column;gap:8px;min-width:0;padding:18px 18px 16px;background:var(--panel);border:1.5px solid var(--line);clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:transform .15s,border-color .15s,box-shadow .15s}
-.card:hover,.card:focus-visible{transform:translateY(-4px);border-color:var(--c,var(--cy));box-shadow:0 0 26px color-mix(in srgb,var(--c,var(--cy)) 45%,transparent);outline:none}
+.grid{display:grid;gap:16px;align-items:stretch}
+.hof{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.games{grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
+.card{position:relative;display:flex;flex-direction:column;gap:10px;min-width:0;padding:20px 20px 18px;background:var(--panel);border:1.5px solid var(--line);clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:border-color .15s,box-shadow .15s}
+.card:hover,.card:focus-within{border-color:var(--c,var(--cy));box-shadow:0 0 26px color-mix(in srgb,var(--c,var(--cy)) 40%,transparent)}
 .card .tag{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--c,var(--cy))}
-.card h3{font-size:19px;line-height:1.3;overflow-wrap:anywhere}
-.card p{font-size:13px;line-height:1.6;color:#c5cae6;flex:1}
-.card .go{font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:.15em;color:var(--c,var(--cy));margin-top:4px}
-.card .meta{font-size:11px;color:var(--mu);overflow-wrap:anywhere}
+.card h3{font-size:20px;line-height:1.3;overflow-wrap:anywhere}
+.card .lead2{font-size:13px;line-height:1.6;color:#c5cae6}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:6px;flex:1;padding-top:10px;border-top:1px solid var(--line)}
+.card li{font-size:13px;line-height:1.65;color:#cfd4ee;padding-left:14px;position:relative;overflow-wrap:anywhere}
+.card li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:2px;background:var(--c,var(--cy))}
+.card .meta{font-size:11px;color:var(--mu);overflow-wrap:anywhere;line-height:1.6}
+.card .go{align-self:flex-start;font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:.15em;color:var(--c,var(--cy));border:1.5px solid var(--c,var(--cy));padding:8px 16px;margin-top:4px;transition:background .12s,color .12s}
+.card .go:hover,.card .go:focus-visible{background:var(--c,var(--cy));color:#07060d;outline:none}
 .hof .card{border-color:color-mix(in srgb,var(--ye) 60%,var(--line));background:linear-gradient(160deg,#1a1430,var(--panel))}
-.hof .card h3{font-size:22px}
-.note{font-size:12px;color:var(--mu);margin-top:8px;line-height:1.6}
+.hof .card h3{font-size:23px}
+.hof .card li{font-size:13.5px}
+.note{font-size:12px;color:var(--mu);margin-top:10px;line-height:1.7}
 footer{margin-top:44px;text-align:center;font-size:12px;color:var(--mu)}
-@media (prefers-reduced-motion:reduce){.card{transition:none}}
+@media (prefers-reduced-motion:reduce){.card,.go{transition:none}}
 </style>
 </head>
 <body>
@@ -47,81 +52,187 @@ footer{margin-top:44px;text-align:center;font-size:12px;color:var(--mu)}
   <header>
     <div class="logo">YEONNY ARCADE</div>
     <div class="sub">GAME COLLECTION</div>
-    <p class="lead">내가 만든 게임 중에서 잘 만든 것만 모았습니다. 카드를 누르면 새 탭에서 열립니다.</p>
+    <p class="lead">내가 만든 게임 중에서 잘 만든 것만 모았습니다. 아래 버튼을 누르면 새 탭에서 열립니다.</p>
   </header>
 
   <h2><b>★</b> 명예의 전당</h2>
   <div class="grid hof">
-    <a class="card" style="--c:#ffe14d" href="https://qkrtpdbs1-cajfntkjrpgleppcqjkg8n.streamlit.app/dragon_nursery_page" target="_blank" rel="noopener">
+    <article class="card" style="--c:#ffe14d">
       <span class="tag">첫 번째 게임</span>
       <h3>스트림릿 페이지</h3>
-      <p>처음 만든 게임. Streamlit으로 만든 페이지입니다.</p>
-      <span class="meta">Streamlit</span>
-      <span class="go">PLAY ▶</span>
-    </a>
-    <a class="card" style="--c:#ff3df0" href="https://yeonny3209.github.io/blade-raid/" target="_blank" rel="noopener">
+      <p class="lead2">처음 만든 게임이 들어 있는 Streamlit 앱입니다.</p>
+      <ul>
+        <li>이 버튼은 앱 안의 「드래곤 보육원 &amp; 배틀 RPG」 페이지로 바로 연결됩니다.</li>
+        <li>화면은 React와 Tailwind로 만들어 Streamlit 앱 안에 끼워 넣었습니다.</li>
+        <li>게임의 흐름은 먹이 주기, 교배하기, 3대3 전투 순서입니다.</li>
+        <li>보육원에서 드래곤을 키우고, 교배소에서 새 드래곤을 얻습니다.</li>
+        <li>알을 노리는 밀렵꾼이 나오고, 함정을 설치해 알을 지킬 수 있습니다.</li>
+        <li>전투는 드래곤 3마리를 골라 내보내고 턴을 주고받는 방식입니다.</li>
+        <li>AI 투기장에서는 컴퓨터와 싸우고, 친선전에서는 사람과 싸웁니다.</li>
+        <li>친선전은 한 기기에서 번갈아 조작하거나, 방 코드를 써서 다른 기기와 온라인으로 합니다.</li>
+        <li>드래곤에는 각성과 전설 등급이 있고, 속성마다 다른 필살기 연출이 나옵니다.</li>
+        <li>모은 드래곤은 도감으로 확인하고, 진행 상황은 내보내기와 불러오기로 옮길 수 있습니다.</li>
+        <li>같은 Streamlit 앱 안에는 업다운 게임, 뱀사다리, 쿼리도, 9속성 타워 디펜스, 1대1 멀티 RPG, 드래곤 서바이버, 몽글이 키우기, 좀비 디펜스 FPS, 개미굴 대전, 검투사 아레나, 리듬 세카이, 워들 등 다른 게임도 함께 들어 있습니다.</li>
+      </ul>
+      <span class="meta">접속하면 Streamlit 로그인 화면으로 넘어갈 수 있습니다. 앱이 비공개이거나 잠들어 있을 때 그렇습니다.</span>
+      <a class="go" href="https://qkrtpdbs1-cajfntkjrpgleppcqjkg8n.streamlit.app/dragon_nursery_page" target="_blank" rel="noopener">PLAY ▶</a>
+    </article>
+
+    <article class="card" style="--c:#ff3df0">
       <span class="tag">가장 잘 만든 게임</span>
       <h3>블레이드 레이드</h3>
-      <p>2D 벨트스크롤 액션 RPG.</p>
-      <span class="meta">BLADE RAID</span>
-      <span class="go">PLAY ▶</span>
-    </a>
-    <a class="card" style="--c:#29f0ff" href="https://chimerical-licorice-8b602c.netlify.app/" target="_blank" rel="noopener">
+      <p class="lead2">던전앤파이터 스타일의 2D 벨트스크롤 액션 RPG입니다.</p>
+      <ul>
+        <li>화면은 2D이고, 그래픽은 Canvas2D, 효과음은 WebAudio로 직접 만들었습니다.</li>
+        <li>모닥불이 켜진 야영지 로비에서 가로 카드로 던전을 고릅니다.</li>
+        <li>앞의 던전을 클리어해야 다음 던전의 잠금이 풀립니다.</li>
+        <li>던전은 어둠의 숲, 잊혀진 신전, 얼어붙은 설원, 버려진 광산, 사막의 유적, 죽음의 늪, 강철 공장, 천상의 회랑, 심연의 나락, 군주의 옥좌까지 10곳입니다.</li>
+        <li>던전마다 보스가 따로 있어 바르카스, 요툰, 고르곤, 네크렘, 펜라, CX-9, 세라핌, 아즈모르, 이그니스, 카오스 10명과 차례로 싸웁니다.</li>
+        <li>주인공은 검귀 카엘이고, 돌진참과 지진검 같은 기술을 씁니다.</li>
+        <li>캐릭터는 이미지 파일 없이 코드로 부위별로 그려서 움직입니다.</li>
+        <li>로비에서 보유 골드와 진행도, 던전별 최고 랭크를 확인합니다.</li>
+        <li>컴퓨터는 키보드와 마우스, 휴대폰은 화면 터치로 조작합니다.</li>
+        <li>설치형 웹앱(PWA)이라 홈 화면에 추가해 오프라인으로도 열 수 있고, 안드로이드 앱 프로젝트도 들어 있습니다.</li>
+        <li>직접 만든 게임 중에서 가장 잘 만든 작품으로 꼽은 게임입니다.</li>
+      </ul>
+      <a class="go" href="https://yeonny3209.github.io/blade-raid/" target="_blank" rel="noopener">PLAY ▶</a>
+    </article>
+
+    <article class="card" style="--c:#29f0ff">
       <span class="tag">첫 번째 3D 게임</span>
       <h3>3D 게임 포털</h3>
-      <p>React Three Fiber로 만든 3D 게임 모음. 액션 RPG와 드래곤 라이더 비행 슈팅.</p>
-      <span class="meta">My 3D Game Universe</span>
-      <span class="go">PLAY ▶</span>
-    </a>
+      <p class="lead2">React Three Fiber로 만든 3D 게임 포털입니다.</p>
+      <ul>
+        <li>처음으로 만든 3D 게임이고, 이름은 「My 3D Game Universe」입니다.</li>
+        <li>하드코어 액션 RPG와 드래곤 라이더 비행 슈팅, 두 가지 게임을 담았습니다.</li>
+        <li>설치 없이 브라우저에서 바로 플레이합니다.</li>
+        <li>RPG에는 직업 선택과 전직관이 있어 캐릭터를 성장시킵니다.</li>
+        <li>같이 하기 메뉴에서 파티 초대, 결투 신청, 거래 신청을 할 수 있습니다.</li>
+        <li>파밍의 투기장과 힐러의 부활처럼 여럿이 함께 하는 요소가 있습니다.</li>
+        <li>다른 기기의 가족·친구와는 인터넷 중계 서버를 거쳐 만납니다.</li>
+        <li>서버가 없어도 혼자 하는 로컬 모드로 게임이 정상 동작합니다.</li>
+        <li>컴퓨터는 좌클릭, 점프, 우클릭 드래그로 시점을 돌리며 조작합니다.</li>
+        <li>휴대폰에서는 화면 조이스틱으로 움직입니다.</li>
+        <li>Netlify에 무료로 배포했고, 주소만 알면 컴퓨터와 휴대폰 어디서나 열립니다.</li>
+      </ul>
+      <span class="meta">세부 기능은 소스 코드를 기준으로 적었습니다. 실제 화면과 조금 다를 수 있습니다.</span>
+      <a class="go" href="https://chimerical-licorice-8b602c.netlify.app/" target="_blank" rel="noopener">PLAY ▶</a>
+    </article>
   </div>
-  <p class="note">첫 번째 게임(Streamlit)은 접속하면 Streamlit 로그인 화면으로 넘어갈 수 있습니다. 앱이 비공개이거나 잠들어 있을 때 그렇습니다.</p>
 
   <h2>대표 게임</h2>
   <div class="grid games">
-    <a class="card" style="--c:#ff3df0" href="https://yeonny3209.github.io/overclock/" target="_blank" rel="noopener">
+    <article class="card" style="--c:#ff3df0">
       <span class="tag">로그라이트 슈팅</span>
       <h3>오버클럭</h3>
-      <p>4개 구역을 돌파해 중앙 서버를 끄는 탑다운 로그라이트 슈팅. 요원 10명, 속성 14종, 하드 모드.</p>
+      <p class="lead2">기계 군단이 점령한 도시의 네 구역을 돌파해 중앙 서버를 끄는 탑다운 슈팅입니다.</p>
+      <ul>
+        <li>구역은 폐차장, 냉각 시설, 발전소, 중앙 서버 4곳이고, 구역마다 갈림길 지도를 골라 내려갑니다.</li>
+        <li>요원은 10명이고 각자 고유 스킬이 있습니다. 레인만 처음부터 쓸 수 있고 나머지는 조건을 채우거나 코어 칩으로 해금합니다.</li>
+        <li>속성이 14종이고 속성마다 상태 이상이 달라서, 불은 지속 피해, 얼음은 빙결, 어둠은 처형, 바람은 벽 충돌처럼 서로 겹치지 않습니다.</li>
+        <li>같은 태그 강화를 9개 모으면 속성마다 다른 프리즘 각성이 켜집니다.</li>
+        <li>보스 4체, 무기 14종, 강화 90여 개, 오버클럭 모드, 적 해킹, 무기 융합이 있습니다.</li>
+        <li>캠페인, 무한 아레나, 일일 도전, 하드 모드를 지원하고 진행 중인 판이 자동 저장됩니다.</li>
+      </ul>
       <span class="meta">안드로이드 앱(APK)도 있습니다.</span>
-      <span class="go">PLAY ▶</span>
-    </a>
-    <a class="card" style="--c:#29f0ff" href="https://yeonny3209.github.io/neon-core-defense/" target="_blank" rel="noopener">
+      <a class="go" href="https://yeonny3209.github.io/overclock/" target="_blank" rel="noopener">PLAY ▶</a>
+    </article>
+
+    <article class="card" style="--c:#29f0ff">
       <span class="tag">디펜스</span>
       <h3>네온 코어 디펜스</h3>
-      <p>방어탑 52종, 증강 1250종, 온라인 협동전.</p>
-      <span class="go">PLAY ▶</span>
-    </a>
-    <a class="card" style="--c:#ff3df0" href="https://yeonny3209.github.io/blade-raid/" target="_blank" rel="noopener">
+      <p class="lead2">방어탑 52종, 증강 1250종, 온라인 협동전을 지원하는 2D 타워 디펜스입니다.</p>
+      <ul>
+        <li>코어를 지키기 위해 길목에 방어탑을 세우고, 웨이브마다 몰려오는 침공체를 막습니다.</li>
+        <li>방어탑은 개틀링 포, 미사일 포드, 광자포, 빙결 폭풍, 용암 분출구, 중력 우물, 시간 가속기 등 52종입니다.</li>
+        <li>침공체는 드론, 질주체, 중장갑, 비행체, 분열체, 재생체, 차폐체, 위상체, 파괴자 같은 종류가 나옵니다.</li>
+        <li>지형은 새벽 회랑, 이중 나선, 쌍둥이 관문, 미궁 코어이고 난이도는 훈련, 정규, 말살입니다.</li>
+        <li>웨이브가 끝나면 증강 중 하나를 골라 방어탑을 강하게 만듭니다. 증강은 1250종입니다.</li>
+        <li>방 코드를 만들어 친구와 협동전을 하거나, 두 사람이 번갈아 하는 대전도 할 수 있습니다.</li>
+        <li>지형마다 최고 점수와 도달 웨이브를 기록하고, 효과음과 배경음은 끌 수 있습니다.</li>
+      </ul>
+      <a class="go" href="https://yeonny3209.github.io/neon-core-defense/" target="_blank" rel="noopener">PLAY ▶</a>
+    </article>
+
+    <article class="card" style="--c:#ff3df0">
       <span class="tag">액션 RPG</span>
       <h3>블레이드 레이드</h3>
-      <p>던전앤파이터 스타일 2D 벨트스크롤 액션 RPG.</p>
-      <span class="go">PLAY ▶</span>
-    </a>
-    <a class="card" style="--c:#7dffb8" href="https://yeonny3209.github.io/lol-prototype/" target="_blank" rel="noopener">
+      <p class="lead2">던전앤파이터 스타일의 2D 벨트스크롤 액션 RPG입니다.</p>
+      <ul>
+        <li>야영지 로비에서 던전을 고르고 들어가 몬스터를 베며 앞으로 나아갑니다.</li>
+        <li>던전 10곳에 각각 보스가 있고, 앞의 던전을 클리어해야 다음이 열립니다.</li>
+        <li>주인공은 검귀 카엘이며 돌진참, 지진검 같은 기술을 씁니다.</li>
+        <li>캐릭터와 효과음을 파일 없이 코드로 만들어서 가볍게 실행됩니다.</li>
+        <li>키보드와 마우스, 휴대폰 터치를 모두 지원합니다.</li>
+        <li>홈 화면에 추가하면 오프라인으로도 열립니다. 자세한 설명은 위 명예의 전당에 있습니다.</li>
+      </ul>
+      <a class="go" href="https://yeonny3209.github.io/blade-raid/" target="_blank" rel="noopener">PLAY ▶</a>
+    </article>
+
+    <article class="card" style="--c:#7dffb8">
       <span class="tag">LOL 형식</span>
       <h3>LOL 프로토타입</h3>
-      <p>상점과 주문서가 있는 LOL 형식의 게임. 1대1 대결도 가능합니다.</p>
-      <span class="go">PLAY ▶</span>
-    </a>
-    <a class="card" style="--c:#ffe14d" href="https://yeonny3209.github.io/island-farm-shop/" target="_blank" rel="noopener">
+      <p class="lead2">롤 스타일의 2D 탑뷰 MOBA 프로토타입입니다.</p>
+      <ul>
+        <li>3라인 맵에 미니언, 포탑, 정글이 있고, 상대 넥서스를 부수면 이깁니다.</li>
+        <li>지금은 챔피언 오리아나를 플레이할 수 있고, 챔피언과 시스템을 하나씩 늘려 가는 중입니다.</li>
+        <li>시작 화면에서 챔피언, 포지션, 소환사 주문 2개, 룬 페이지를 순서대로 고릅니다.</li>
+        <li>추천 룬과 추천 주문 버튼으로 챔피언별 추천 구성을 한 번에 불러옵니다.</li>
+        <li>조작 방식은 클래식과 WASD 중에서 고르고, 일시정지 화면에서도 바꿀 수 있습니다.</li>
+        <li>1대1 온라인에서는 방 코드 5자리로 친구와 대결하고, 서버 없이 P2P로 연결합니다.</li>
+        <li>상점에서 아이템을 사고 봉인 풀린 주문서를 쓰며, 아이콘은 라이엇 데이터 서버에서 불러옵니다.</li>
+      </ul>
+      <span class="meta">아이콘을 불러오려면 인터넷이 필요하고, 없으면 글자로 표시됩니다.</span>
+      <a class="go" href="https://yeonny3209.github.io/lol-prototype/" target="_blank" rel="noopener">PLAY ▶</a>
+    </article>
+
+    <article class="card" style="--c:#ffe14d">
       <span class="tag">경영 시뮬레이션</span>
       <h3>작은 섬 농장 가게</h3>
-      <p>40일 안에 빚 5,000G를 갚는 농장·가게 경영 시뮬레이션.</p>
-      <span class="go">PLAY ▶</span>
-    </a>
-    <a class="card" style="--c:#ff8a2a" href="https://yeonny3209.github.io/minicut/" target="_blank" rel="noopener">
+      <p class="lead2">물려받은 빚 5,000G를 48일 안에 갚는 농장·가게 경영 시뮬레이션입니다.</p>
+      <ul>
+        <li>버려진 밭과 가게를 물려받아 작물을 키우고, 내 가게에서 팔아 빚을 갚습니다.</li>
+        <li>하루는 아침 확인, 밭 작업, 가게 준비, 영업, 밤 정산 순서로 흘러갑니다.</li>
+        <li>계절은 봄, 여름, 가을, 겨울이 각각 12일이고, 작물은 계절마다 10종씩 40종입니다.</li>
+        <li>진열대에 작물을 놓고 가격 슬라이더로 값을 정합니다. 비싸면 손님이 줄고, 같은 물건을 계속 팔면 질립니다.</li>
+        <li>날씨, 오늘의 인기 작물, 스프링클러, 잼과 피클 같은 가공품이 있습니다.</li>
+        <li>저장 슬롯이 3개이고 하루가 끝날 때마다 자동 저장되며, 저장 코드로 다른 기기로 옮길 수 있습니다.</li>
+        <li>휴대폰과 태블릿용 안드로이드 앱(APK)이 있고, 아이폰은 홈 화면에 추가해 쓸 수 있습니다.</li>
+      </ul>
+      <a class="go" href="https://yeonny3209.github.io/island-farm-shop/" target="_blank" rel="noopener">PLAY ▶</a>
+    </article>
+
+    <article class="card" style="--c:#ff8a2a">
       <span class="tag">편집 프로그램</span>
       <h3>MiniCut</h3>
-      <p>전환 효과와 내보내기를 지원하는 브라우저 편집 프로그램.</p>
-      <span class="go">OPEN ▶</span>
-    </a>
-    <a class="card" style="--c:#9b6bff" href="https://tgame-9sve.onrender.com/" target="_blank" rel="noopener">
+      <p class="lead2">설치 없이 브라우저에서 쓰는 영상 편집기입니다. HTML 파일 하나가 전부입니다.</p>
+      <ul>
+        <li>여러 영상을 이어 붙이고, 자르고, 순서를 바꾸고, 속도를 0.25배에서 4배까지 바꿉니다.</li>
+        <li>클립 사이에 디졸브, 암전, 밀기, 와이프, 원형, 줌 같은 전환 효과를 넣습니다.</li>
+        <li>화면 비율은 16:9, 9:16, 1:1, 4:5, 4:3이라 가로 영상을 세로 쇼츠로 쉽게 바꿉니다.</li>
+        <li>자막은 미리보기 화면에서 끌어서 위치를 잡고, 스타일 10종과 등장 애니메이션 7종을 씁니다.</li>
+        <li>필터 12종, 효과 14종, 배경음악, 스티커, 색보정을 지원합니다.</li>
+        <li>영상은 네트워크로 전송되지 않아서 인터넷을 끊어도 똑같이 동작합니다.</li>
+        <li>720p 또는 1080p WebM 파일로 내보내고, 프로젝트 저장과 실행 취소 60단계를 지원합니다.</li>
+      </ul>
+      <a class="go" href="https://yeonny3209.github.io/minicut/" target="_blank" rel="noopener">OPEN ▶</a>
+    </article>
+
+    <article class="card" style="--c:#9b6bff">
       <span class="tag">대전 · 최대 5명</span>
       <h3>대전 테트리스</h3>
-      <p>방 코드로 친구를 불러 함께 하는 대전 테트리스.</p>
-      <span class="meta">무료 서버라 처음 접속하면 깨어나는 데 시간이 걸릴 수 있습니다.</span>
-      <span class="go">PLAY ▶</span>
-    </a>
+      <p class="lead2">방 코드로 친구를 불러 함께 하는 대전 테트리스입니다.</p>
+      <ul>
+        <li>방 만들기로 방 코드를 받아 친구에게 알려 주고, 친구는 방 참가에서 코드를 입력합니다.</li>
+        <li>2명이 모이면 시작할 수 있고, 최대 5명까지 한 방에서 겨룹니다.</li>
+        <li>닉네임은 입력하지 않아도 되고, 준비 완료를 누르면 대결이 시작됩니다.</li>
+        <li>혼자 연습하는 모드에서 쉬움, 보통, 어려움, 익스트림 난이도를 고를 수 있습니다.</li>
+        <li>← → 로 이동, ↓ 로 소프트드롭, ↑ 또는 X로 시계 회전, Z로 반시계 회전하고, 하드드롭, Shift 홀드, P 일시정지를 지원합니다.</li>
+        <li>게임이 끝나면 점수가 나오고 재대결을 신청할 수 있으며, 소리는 켜고 끌 수 있습니다.</li>
+      </ul>
+      <span class="meta">무료 서버라 한동안 쓰지 않으면 처음 접속할 때 깨어나는 데 시간이 걸릴 수 있습니다.</span>
+      <a class="go" href="https://tgame-9sve.onrender.com/" target="_blank" rel="noopener">PLAY ▶</a>
+    </article>
   </div>
 
   <footer>© Yeonny · 게임은 각자 다른 주소에서 실행됩니다</footer>
