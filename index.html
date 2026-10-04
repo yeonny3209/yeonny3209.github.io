@@ -53,6 +53,54 @@ h2 b{color:var(--ye);font-weight:700}
 .note{font-size:12px;color:var(--mu);margin-top:10px;line-height:1.7}
 footer{margin-top:44px;text-align:center;font-size:12px;color:var(--mu)}
 @media (prefers-reduced-motion:reduce){.card,.go{transition:none}}
+
+.hof-open{display:block;margin:22px auto 0;font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-size:clamp(18px,3.4vw,24px);letter-spacing:.08em;color:#2a1c00;background:linear-gradient(120deg,#ffb52e,#ffe14d 40%,#fff6b0 50%,#ffe14d 60%,#ffb52e);background-size:220% 100%;border:0;padding:14px 34px;cursor:pointer;clip-path:polygon(16px 0,100% 0,calc(100% - 16px) 100%,0 100%);box-shadow:0 0 30px rgba(255,225,77,.55);animation:shine 3.2s linear infinite,pulse 2.4s ease-in-out infinite}
+.hof-open .star{display:inline-block;animation:spin 3s linear infinite}
+.hof-open:hover{filter:brightness(1.12)}
+.hof-open:focus-visible{outline:3px solid #fff;outline-offset:4px}
+@keyframes shine{to{background-position:-220% 0}}
+@keyframes pulse{50%{box-shadow:0 0 48px rgba(255,225,77,.9)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hof-ov{position:fixed;inset:0;z-index:50;background:radial-gradient(ellipse at 50% 0,#3a2a06 0,#120c02 55%,#050301 100%);opacity:0;transition:opacity .5s}
+.hof-ov.open{opacity:1}
+.hof-ov[hidden]{display:none}
+#hofFx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hof-beam{position:absolute;left:50%;top:-10%;width:160vmax;height:160vmax;margin-left:-80vmax;pointer-events:none;opacity:0;background:conic-gradient(from 0deg,transparent 0 8%,rgba(255,225,77,.16) 10%,transparent 12% 20%,rgba(255,225,77,.12) 22%,transparent 24% 33%,rgba(255,200,60,.15) 35%,transparent 37% 48%,rgba(255,225,77,.12) 50%,transparent 52% 63%,rgba(255,200,60,.15) 65%,transparent 67% 78%,rgba(255,225,77,.12) 80%,transparent 82% 100%);-webkit-mask:radial-gradient(circle,#000 0,transparent 55%);mask:radial-gradient(circle,#000 0,transparent 55%)}
+.hof-ov.open .hof-beam{opacity:1;transition:opacity 1.2s .2s;animation:rays 40s linear infinite}
+@keyframes rays{to{transform:rotate(360deg)}}
+.hof-scroll{position:absolute;inset:0;overflow-y:auto;padding:0 16px 64px;-webkit-overflow-scrolling:touch}
+.hof-x{position:fixed;top:max(12px,env(safe-area-inset-top));right:16px;z-index:3;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,225,77,.6);background:rgba(10,6,0,.7);color:#ffe14d;font-size:18px;cursor:pointer}
+.hof-x:hover,.hof-x:focus-visible{background:#ffe14d;color:#120c02;outline:none}
+.hof-head{text-align:center;padding:64px 0 28px;max-width:1000px;margin:0 auto}
+.hof-kicker{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.5em;text-indent:.5em;font-size:12px;color:#ffb52e;opacity:0;transform:translateY(-8px);transition:all .6s .3s}
+.hof-ov.open .hof-kicker{opacity:1;transform:none}
+.hof-ov h2.hof-title{font-family:'Orbitron','Black Han Sans',sans-serif;font-weight:900;font-size:clamp(34px,9vw,92px);line-height:1.1;letter-spacing:.06em;margin:10px 0 0;display:block;text-transform:none;color:#fff6b0;text-shadow:0 0 14px #ffe14d,0 0 44px #ff9a00}
+.hof-ov h2.hof-title::after{display:none}
+.hof-title span{display:inline-block;opacity:0;transform:translateY(40px) scale(.6);filter:blur(8px)}
+.hof-ov.open .hof-title span{animation:letter .7s cubic-bezier(.2,1.4,.4,1) forwards;animation-delay:calc(.45s + var(--i)*.07s)}
+@keyframes letter{to{opacity:1;transform:none;filter:none}}
+.hof-sub{margin-top:12px;color:#d9c9a0;font-size:15px;letter-spacing:.2em;opacity:0;transition:opacity .8s 1.6s}
+.hof-ov.open .hof-sub{opacity:1}
+.hof-ch{position:relative;max-width:1000px;margin:34px auto 0;padding:30px 28px 26px;background:linear-gradient(160deg,rgba(32,22,6,.92),rgba(14,9,3,.94));border:1.5px solid color-mix(in srgb,var(--c) 70%,#000);box-shadow:0 0 40px color-mix(in srgb,var(--c) 28%,transparent),inset 0 0 60px color-mix(in srgb,var(--c) 8%,transparent);clip-path:polygon(22px 0,100% 0,calc(100% - 22px) 100%,0 100%);opacity:0;transform:translateY(60px) scale(.96)}
+.hof-ch.in{opacity:1;transform:none;transition:opacity .8s,transform .9s cubic-bezier(.2,1.2,.3,1)}
+.hof-ch.in::before{content:"";position:absolute;top:0;bottom:0;width:30%;left:-40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent);animation:sweep 1.4s .3s ease-out forwards;pointer-events:none}
+@keyframes sweep{to{left:120%}}
+.hof-ch .badge{display:inline-block;font-family:'Orbitron','Noto Sans KR',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;color:#120c02;background:var(--c);padding:6px 14px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+.hof-ch h3{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-weight:400;font-size:clamp(26px,5vw,44px);line-height:1.2;margin:14px 0 6px;color:#fff;text-shadow:0 0 18px var(--c)}
+.hof-ch .quote{font-size:clamp(15px,2.4vw,19px);color:var(--c);font-weight:700;margin-bottom:12px}
+.hof-ch .para{font-size:15px;line-height:1.85;color:#e6e0cf;margin-top:8px;max-width:78ch}
+.hof-ch .chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 14px}
+.hof-ch .chips span{font-size:12px;font-weight:700;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 70%,#000);padding:5px 12px;background:color-mix(in srgb,var(--c) 10%,transparent)}
+.hof-ch ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:4px 26px;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--c) 40%,#000)}
+.hof-ch li{font-size:13px;line-height:1.7;color:#d4cfc0;padding-left:14px;position:relative;overflow-wrap:anywhere}
+.hof-ch li::before{content:"";position:absolute;left:0;top:.75em;width:6px;height:2px;background:var(--c)}
+.hof-ch .meta{font-size:12px;color:#a89d80;margin-top:12px;line-height:1.6}
+.hof-ch .go{display:inline-block;margin-top:18px;font-family:'Orbitron',sans-serif;font-weight:700;font-size:13px;letter-spacing:.15em;color:#120c02;background:var(--c);padding:11px 26px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:filter .12s,transform .12s}
+.hof-ch .go:hover,.hof-ch .go:focus-visible{filter:brightness(1.18);transform:translateY(-2px);outline:none}
+.hof-end{max-width:1000px;margin:40px auto 0;text-align:center;color:#d9c9a0;font-size:14px;letter-spacing:.12em;opacity:0;transition:opacity 1s}
+.hof-end.in{opacity:1}
+body.hof-lock{overflow:hidden}
+@media (prefers-reduced-motion:reduce){.hof-open,.hof-open .star,.hof-beam{animation:none!important}.hof-ov,.hof-title span,.hof-kicker,.hof-sub,.hof-ch,.hof-end{transition:none!important;animation:none!important}.hof-title span{opacity:1;transform:none;filter:none}.hof-kicker,.hof-sub,.hof-ch,.hof-end{opacity:1;transform:none}.hof-ch::before{display:none}}
 </style>
 </head>
 <body>
@@ -61,81 +109,8 @@ footer{margin-top:44px;text-align:center;font-size:12px;color:var(--mu)}
     <div class="logo">YEONNY ARCADE</div>
     <div class="sub">GAME COLLECTION</div>
     <p class="lead">내가 만든 게임 중에서 잘 만든 것만 모았습니다. 「상세 설명 보기」를 누르면 자세한 설명이 펼쳐지고, 아래 버튼을 누르면 새 탭에서 열립니다.</p>
+    <button type="button" class="hof-open" id="hofOpen" aria-haspopup="dialog"><span class="star">★</span> 명예의 전당 <span class="star">★</span></button>
   </header>
-
-  <h2><b>★</b> 명예의 전당</h2>
-  <div class="grid hof">
-    <article class="card" style="--c:#ffe14d">
-      <span class="tag">첫 번째 게임</span>
-      <h3>스트림릿 페이지</h3>
-      <p class="lead2">처음 만든 게임이 들어 있는 Streamlit 앱입니다.</p>
-      <details class="more">
-        <summary>상세 설명 보기 <small>(11줄)</small></summary>
-        <ul>
-        <li>이 버튼은 앱 안의 「드래곤 보육원 &amp; 배틀 RPG」 페이지로 바로 연결됩니다.</li>
-        <li>화면은 React와 Tailwind로 만들어 Streamlit 앱 안에 끼워 넣었습니다.</li>
-        <li>게임의 흐름은 먹이 주기, 교배하기, 3대3 전투 순서입니다.</li>
-        <li>보육원에서 드래곤을 키우고, 교배소에서 새 드래곤을 얻습니다.</li>
-        <li>알을 노리는 밀렵꾼이 나오고, 함정을 설치해 알을 지킬 수 있습니다.</li>
-        <li>전투는 드래곤 3마리를 골라 내보내고 턴을 주고받는 방식입니다.</li>
-        <li>AI 투기장에서는 컴퓨터와 싸우고, 친선전에서는 사람과 싸웁니다.</li>
-        <li>친선전은 한 기기에서 번갈아 조작하거나, 방 코드를 써서 다른 기기와 온라인으로 합니다.</li>
-        <li>드래곤에는 각성과 전설 등급이 있고, 속성마다 다른 필살기 연출이 나옵니다.</li>
-        <li>모은 드래곤은 도감으로 확인하고, 진행 상황은 내보내기와 불러오기로 옮길 수 있습니다.</li>
-        <li>같은 Streamlit 앱 안에는 업다운 게임, 뱀사다리, 쿼리도, 9속성 타워 디펜스, 1대1 멀티 RPG, 드래곤 서바이버, 몽글이 키우기, 좀비 디펜스 FPS, 개미굴 대전, 검투사 아레나, 리듬 세카이, 워들 등 다른 게임도 함께 들어 있습니다.</li>
-      </ul>
-      </details>
-      <span class="meta">접속하면 Streamlit 로그인 화면으로 넘어갈 수 있습니다. 앱이 비공개이거나 잠들어 있을 때 그렇습니다.</span>
-      <a class="go" href="https://qkrtpdbs1-cajfntkjrpgleppcqjkg8n.streamlit.app/dragon_nursery_page" target="_blank" rel="noopener">PLAY ▶</a>
-    </article>
-
-    <article class="card" style="--c:#ff3df0">
-      <span class="tag">가장 잘 만든 게임</span>
-      <h3>블레이드 레이드</h3>
-      <p class="lead2">던전앤파이터 스타일의 2D 벨트스크롤 액션 RPG입니다.</p>
-      <details class="more">
-        <summary>상세 설명 보기 <small>(11줄)</small></summary>
-        <ul>
-        <li>화면은 2D이고, 그래픽은 Canvas2D, 효과음은 WebAudio로 직접 만들었습니다.</li>
-        <li>모닥불이 켜진 야영지 로비에서 가로 카드로 던전을 고릅니다.</li>
-        <li>앞의 던전을 클리어해야 다음 던전의 잠금이 풀립니다.</li>
-        <li>던전은 어둠의 숲, 잊혀진 신전, 얼어붙은 설원, 버려진 광산, 사막의 유적, 죽음의 늪, 강철 공장, 천상의 회랑, 심연의 나락, 군주의 옥좌까지 10곳입니다.</li>
-        <li>던전마다 보스가 따로 있어 바르카스, 요툰, 고르곤, 네크렘, 펜라, CX-9, 세라핌, 아즈모르, 이그니스, 카오스 10명과 차례로 싸웁니다.</li>
-        <li>주인공은 검귀 카엘이고, 돌진참과 지진검 같은 기술을 씁니다.</li>
-        <li>캐릭터는 이미지 파일 없이 코드로 부위별로 그려서 움직입니다.</li>
-        <li>로비에서 보유 골드와 진행도, 던전별 최고 랭크를 확인합니다.</li>
-        <li>컴퓨터는 키보드와 마우스, 휴대폰은 화면 터치로 조작합니다.</li>
-        <li>설치형 웹앱(PWA)이라 홈 화면에 추가해 오프라인으로도 열 수 있고, 안드로이드 앱 프로젝트도 들어 있습니다.</li>
-        <li>직접 만든 게임 중에서 가장 잘 만든 작품으로 꼽은 게임입니다.</li>
-      </ul>
-      </details>
-      <a class="go" href="https://yeonny3209.github.io/blade-raid/" target="_blank" rel="noopener">PLAY ▶</a>
-    </article>
-
-    <article class="card" style="--c:#29f0ff">
-      <span class="tag">첫 번째 3D 게임</span>
-      <h3>3D 게임 포털</h3>
-      <p class="lead2">React Three Fiber로 만든 3D 게임 포털입니다.</p>
-      <details class="more">
-        <summary>상세 설명 보기 <small>(11줄)</small></summary>
-        <ul>
-        <li>처음으로 만든 3D 게임이고, 이름은 「My 3D Game Universe」입니다.</li>
-        <li>하드코어 액션 RPG와 드래곤 라이더 비행 슈팅, 두 가지 게임을 담았습니다.</li>
-        <li>설치 없이 브라우저에서 바로 플레이합니다.</li>
-        <li>RPG에는 직업 선택과 전직관이 있어 캐릭터를 성장시킵니다.</li>
-        <li>같이 하기 메뉴에서 파티 초대, 결투 신청, 거래 신청을 할 수 있습니다.</li>
-        <li>파밍의 투기장과 힐러의 부활처럼 여럿이 함께 하는 요소가 있습니다.</li>
-        <li>다른 기기의 가족·친구와는 인터넷 중계 서버를 거쳐 만납니다.</li>
-        <li>서버가 없어도 혼자 하는 로컬 모드로 게임이 정상 동작합니다.</li>
-        <li>컴퓨터는 좌클릭, 점프, 우클릭 드래그로 시점을 돌리며 조작합니다.</li>
-        <li>휴대폰에서는 화면 조이스틱으로 움직입니다.</li>
-        <li>Netlify에 무료로 배포했고, 주소만 알면 컴퓨터와 휴대폰 어디서나 열립니다.</li>
-      </ul>
-      </details>
-      <span class="meta">세부 기능은 소스 코드를 기준으로 적었습니다. 실제 화면과 조금 다를 수 있습니다.</span>
-      <a class="go" href="https://chimerical-licorice-8b602c.netlify.app/" target="_blank" rel="noopener">PLAY ▶</a>
-    </article>
-  </div>
 
   <h2>대표 게임</h2>
   <div class="grid games">
@@ -295,5 +270,157 @@ footer{margin-top:44px;text-align:center;font-size:12px;color:var(--mu)}
 
   <footer>© Yeonny · 게임은 각자 다른 주소에서 실행됩니다</footer>
 </div>
+<div class="hof-ov" id="hof" hidden role="dialog" aria-modal="true" aria-labelledby="hofTitle">
+  <canvas id="hofFx" aria-hidden="true"></canvas>
+  <div class="hof-beam" aria-hidden="true"></div>
+  <div class="hof-scroll" id="hofScroll">
+    <button type="button" class="hof-x" id="hofClose" aria-label="명예의 전당 닫기">✕</button>
+    <div class="hof-head">
+      <div class="hof-kicker">YEONNY ARCADE</div>
+      <h2 class="hof-title" id="hofTitle" aria-label="HALL OF FAME"></h2>
+      <p class="hof-sub">명예의 전당 · 세 가지 이정표</p>
+    </div>
+    <section class="hof-ch" style="--c:#ffe14d" data-i="0">
+      <div class="badge">FIRST PAGE · 첫 번째 페이지</div>
+      <h3>모든 것이 시작된 첫 페이지</h3>
+      <p class="quote">“여기서 시작됐다.”</p>
+      <p class="para">이 페이지는 처음으로 만든 게임이 태어난 곳입니다. 그 뒤로 이어진 모든 게임의 출발점이고, 그래서 명예의 전당 가장 앞자리에 둡니다.</p><p class="para">처음 만든 게임은 드래곤을 키우고, 교배하고, 3대3으로 싸우는 「드래곤 보육원 &amp; 배틀 RPG」입니다. 이 Streamlit 앱은 그 한 페이지에서 시작해 지금은 업다운 게임부터 타워 디펜스, 좀비 FPS, 리듬 게임, 워들까지 18개 페이지로 자랐습니다.</p>
+      <div class="chips"><span>첫 번째 게임</span><span>Streamlit</span><span>페이지 18개</span><span>드래곤 3대3</span></div>
+      <ul>
+        <li>이 버튼은 앱 안의 「드래곤 보육원 &amp; 배틀 RPG」 페이지로 바로 연결됩니다.</li>
+        <li>화면은 React와 Tailwind로 만들어 Streamlit 앱 안에 끼워 넣었습니다.</li>
+        <li>게임의 흐름은 먹이 주기, 교배하기, 3대3 전투 순서입니다.</li>
+        <li>보육원에서 드래곤을 키우고, 교배소에서 새 드래곤을 얻습니다.</li>
+        <li>알을 노리는 밀렵꾼이 나오고, 함정을 설치해 알을 지킬 수 있습니다.</li>
+        <li>전투는 드래곤 3마리를 골라 내보내고 턴을 주고받는 방식입니다.</li>
+        <li>AI 투기장에서는 컴퓨터와 싸우고, 친선전에서는 사람과 싸웁니다.</li>
+        <li>친선전은 한 기기에서 번갈아 조작하거나, 방 코드를 써서 다른 기기와 온라인으로 합니다.</li>
+        <li>드래곤에는 각성과 전설 등급이 있고, 속성마다 다른 필살기 연출이 나옵니다.</li>
+        <li>모은 드래곤은 도감으로 확인하고, 진행 상황은 내보내기와 불러오기로 옮길 수 있습니다.</li>
+        <li>같은 Streamlit 앱 안에는 업다운 게임, 뱀사다리, 쿼리도, 9속성 타워 디펜스, 1대1 멀티 RPG, 드래곤 서바이버, 몽글이 키우기, 좀비 디펜스 FPS, 개미굴 대전, 검투사 아레나, 리듬 세카이, 워들 등 다른 게임도 함께 들어 있습니다.</li>
+      </ul>
+      <p class="meta">접속하면 Streamlit 로그인 화면으로 넘어갈 수 있습니다. 앱이 비공개이거나 잠들어 있을 때 그렇습니다.</p>
+      <a class="go" href="https://qkrtpdbs1-cajfntkjrpgleppcqjkg8n.streamlit.app/dragon_nursery_page" target="_blank" rel="noopener">PLAY ▶</a>
+    </section>
+    <section class="hof-ch" style="--c:#ff3df0" data-i="1">
+      <div class="badge">THE BEST · 가장 잘 만든 게임</div>
+      <h3>가장 잘 만든 게임</h3>
+      <p class="quote">“내가 만든 것 중 가장 잘 만든 작품.”</p>
+      <p class="para">직접 만든 게임 중에서 가장 잘 만들었다고 꼽은 작품입니다. 던전앤파이터 스타일의 2D 벨트스크롤 액션 RPG로, 완성도에 가장 공을 들였습니다.</p><p class="para">캐릭터 그림과 효과음을 이미지·음원 파일 없이 코드로 만들었고, 던전 10곳마다 보스를 하나씩 배치했습니다. 코드는 애니메이션, 오디오, 보스, 던전, 적, 이펙트, 로비, 터치 조작까지 18개 모듈로 나뉘어 있습니다.</p>
+      <div class="chips"><span>가장 잘 만든 게임</span><span>던전 10곳</span><span>보스 10명</span><span>모듈 18개</span><span>터치·PWA</span></div>
+      <ul>
+        <li>화면은 2D이고, 그래픽은 Canvas2D, 효과음은 WebAudio로 직접 만들었습니다.</li>
+        <li>모닥불이 켜진 야영지 로비에서 가로 카드로 던전을 고릅니다.</li>
+        <li>앞의 던전을 클리어해야 다음 던전의 잠금이 풀립니다.</li>
+        <li>던전은 어둠의 숲, 잊혀진 신전, 얼어붙은 설원, 버려진 광산, 사막의 유적, 죽음의 늪, 강철 공장, 천상의 회랑, 심연의 나락, 군주의 옥좌까지 10곳입니다.</li>
+        <li>던전마다 보스가 따로 있어 바르카스, 요툰, 고르곤, 네크렘, 펜라, CX-9, 세라핌, 아즈모르, 이그니스, 카오스 10명과 차례로 싸웁니다.</li>
+        <li>주인공은 검귀 카엘이고, 돌진참과 지진검 같은 기술을 씁니다.</li>
+        <li>캐릭터는 이미지 파일 없이 코드로 부위별로 그려서 움직입니다.</li>
+        <li>로비에서 보유 골드와 진행도, 던전별 최고 랭크를 확인합니다.</li>
+        <li>컴퓨터는 키보드와 마우스, 휴대폰은 화면 터치로 조작합니다.</li>
+        <li>설치형 웹앱(PWA)이라 홈 화면에 추가해 오프라인으로도 열 수 있고, 안드로이드 앱 프로젝트도 들어 있습니다.</li>
+        <li>직접 만든 게임 중에서 가장 잘 만든 작품으로 꼽은 게임입니다.</li>
+      </ul>
+      
+      <a class="go" href="https://yeonny3209.github.io/blade-raid/" target="_blank" rel="noopener">PLAY ▶</a>
+    </section>
+    <section class="hof-ch" style="--c:#29f0ff" data-i="2">
+      <div class="badge">FIRST 3D · 첫 번째 3D 게임</div>
+      <h3>처음으로 도전한 3D</h3>
+      <p class="quote">“평면을 벗어난 첫 번째 세계.”</p>
+      <p class="para">처음으로 만든 3D 게임입니다. 평면 위에서 움직이던 게임과 달리, 이 게임에서는 처음으로 입체 공간을 달리고 날아다닙니다.</p><p class="para">React Three Fiber로 만든 「My 3D Game Universe」 안에는 하드코어 액션 RPG와 드래곤 라이더 비행 슈팅 두 가지 게임이 들어 있고, 파티·결투·거래로 친구와 함께 즐기는 멀티플레이 메뉴까지 갖췄습니다.</p>
+      <div class="chips"><span>첫 번째 3D</span><span>React Three Fiber</span><span>게임 2종</span><span>멀티플레이</span></div>
+      <ul>
+        <li>처음으로 만든 3D 게임이고, 이름은 「My 3D Game Universe」입니다.</li>
+        <li>하드코어 액션 RPG와 드래곤 라이더 비행 슈팅, 두 가지 게임을 담았습니다.</li>
+        <li>설치 없이 브라우저에서 바로 플레이합니다.</li>
+        <li>RPG에는 직업 선택과 전직관이 있어 캐릭터를 성장시킵니다.</li>
+        <li>같이 하기 메뉴에서 파티 초대, 결투 신청, 거래 신청을 할 수 있습니다.</li>
+        <li>파밍의 투기장과 힐러의 부활처럼 여럿이 함께 하는 요소가 있습니다.</li>
+        <li>다른 기기의 가족·친구와는 인터넷 중계 서버를 거쳐 만납니다.</li>
+        <li>서버가 없어도 혼자 하는 로컬 모드로 게임이 정상 동작합니다.</li>
+        <li>컴퓨터는 좌클릭, 점프, 우클릭 드래그로 시점을 돌리며 조작합니다.</li>
+        <li>휴대폰에서는 화면 조이스틱으로 움직입니다.</li>
+        <li>Netlify에 무료로 배포했고, 주소만 알면 컴퓨터와 휴대폰 어디서나 열립니다.</li>
+      </ul>
+      <p class="meta">세부 기능은 소스 코드를 기준으로 적었습니다. 실제 화면과 조금 다를 수 있습니다.</p>
+      <a class="go" href="https://chimerical-licorice-8b602c.netlify.app/" target="_blank" rel="noopener">PLAY ▶</a>
+    </section>
+    <p class="hof-end">★ 이 세 게임이 지금의 Yeonny Arcade를 만들었습니다 ★</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var ov = document.getElementById('hof'), openBtn = document.getElementById('hofOpen'), closeBtn = document.getElementById('hofClose');
+  var title = document.getElementById('hofTitle'), scroller = document.getElementById('hofScroll'), cv = document.getElementById('hofFx');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timers = [], raf = 0, parts = [], running = false, lastFocus = null;
+  // 제목 글자를 하나씩 나타나게 쪼갠다
+  'HALL OF FAME'.split('').forEach(function (ch, i) {
+    var s = document.createElement('span');
+    s.style.setProperty('--i', i);
+    s.textContent = ch === ' ' ? ' ' : ch;
+    title.appendChild(s);
+  });
+  function sizeCv() { var d = Math.min(2, window.devicePixelRatio || 1); cv.width = innerWidth * d; cv.height = innerHeight * d; }
+  function spawn(burst) {
+    var n = burst ? 90 : 1;
+    for (var i = 0; i < n; i++) {
+      var a = Math.random() * Math.PI * 2, sp = burst ? (2 + Math.random() * 7) : 0;
+      var life = burst ? 90 + Math.random() * 60 : 260 + Math.random() * 200;
+      parts.push({
+        x: burst ? innerWidth / 2 : Math.random() * innerWidth, y: burst ? innerHeight * 0.28 : innerHeight + 10,
+        vx: Math.cos(a) * sp, vy: burst ? Math.sin(a) * sp - 2 : -(0.6 + Math.random() * 1.6), g: burst ? 0.12 : 0,
+        life: life, max: life, r: burst ? 1.5 + Math.random() * 3 : 1 + Math.random() * 2.4, h: 40 + Math.random() * 20
+      });
+    }
+  }
+  function frame() {
+    if (!running) return;
+    var d = Math.min(2, window.devicePixelRatio || 1), x = cv.getContext('2d');
+    x.setTransform(d, 0, 0, d, 0, 0); x.clearRect(0, 0, innerWidth, innerHeight); x.globalCompositeOperation = 'lighter';
+    if (parts.length < 160 && Math.random() < 0.5) spawn(false);
+    for (var i = parts.length - 1; i >= 0; i--) {
+      var p = parts[i]; p.life--; p.x += p.vx; p.y += p.vy; p.vy += p.g; p.vx *= 0.985;
+      if (p.life <= 0 || p.y < -20) { parts.splice(i, 1); continue; }
+      var k = p.life / p.max; x.globalAlpha = Math.min(1, k * 1.6);
+      x.fillStyle = 'hsl(' + p.h + ',100%,' + (55 + k * 25) + '%)'; x.beginPath(); x.arc(p.x, p.y, p.r * (0.5 + k), 0, 6.283); x.fill();
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function open() {
+    lastFocus = document.activeElement; ov.hidden = false; document.body.classList.add('hof-lock');
+    scroller.scrollTop = 0;
+    [].forEach.call(ov.querySelectorAll('.hof-ch,.hof-end'), function (e) { e.classList.remove('in'); });
+    void ov.offsetWidth; ov.classList.add('open');
+    var steps = reduce ? [0, 0, 0, 0] : [1700, 2500, 3300, 4100];
+    var els = ov.querySelectorAll('.hof-ch,.hof-end');
+    [].forEach.call(els, function (e, i) { later(function () { e.classList.add('in'); if (!reduce && i < 3) spawn(true); }, steps[i]); });
+    if (!reduce) { sizeCv(); parts = []; running = true; spawn(true); later(function () { spawn(true); }, 700); raf = requestAnimationFrame(frame); }
+    closeBtn.focus({ preventScroll: true });
+  }
+  function close() {
+    ov.classList.remove('open'); timers.forEach(clearTimeout); timers = []; running = false; cancelAnimationFrame(raf);
+    setTimeout(function () { ov.hidden = true; document.body.classList.remove('hof-lock'); }, reduce ? 0 : 450);
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+  openBtn.addEventListener('click', open); closeBtn.addEventListener('click', close);
+  ov.addEventListener('click', function (e) { if (e.target === ov || e.target === scroller) close(); });
+  addEventListener('keydown', function (e) {
+    if (ov.hidden) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key === 'Tab') { // 대화상자 안에서만 포커스 이동
+      var f = [].slice.call(ov.querySelectorAll('a[href],button')); if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  addEventListener('resize', function () { if (running) sizeCv(); });
+})();
+
+</script>
 </body>
 </html>
