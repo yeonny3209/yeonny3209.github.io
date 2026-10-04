@@ -68,7 +68,7 @@ footer{margin-top:44px;text-align:center;font-size:12px;color:var(--mu)}
 .hof-beam{position:absolute;left:50%;top:-10%;width:160vmax;height:160vmax;margin-left:-80vmax;pointer-events:none;opacity:0;background:conic-gradient(from 0deg,transparent 0 8%,rgba(255,225,77,.16) 10%,transparent 12% 20%,rgba(255,225,77,.12) 22%,transparent 24% 33%,rgba(255,200,60,.15) 35%,transparent 37% 48%,rgba(255,225,77,.12) 50%,transparent 52% 63%,rgba(255,200,60,.15) 65%,transparent 67% 78%,rgba(255,225,77,.12) 80%,transparent 82% 100%);-webkit-mask:radial-gradient(circle,#000 0,transparent 55%);mask:radial-gradient(circle,#000 0,transparent 55%)}
 .hof-ov.open .hof-beam{opacity:1;transition:opacity 1.2s .2s;animation:rays 40s linear infinite}
 @keyframes rays{to{transform:rotate(360deg)}}
-.hof-scroll{position:absolute;inset:0;overflow-y:auto;padding:0 16px 64px;-webkit-overflow-scrolling:touch}
+.hof-scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:0 16px 64px;-webkit-overflow-scrolling:touch}
 .hof-x{position:fixed;top:max(12px,env(safe-area-inset-top));right:16px;z-index:3;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,225,77,.6);background:rgba(10,6,0,.7);color:#ffe14d;font-size:18px;cursor:pointer}
 .hof-x:hover,.hof-x:focus-visible{background:#ffe14d;color:#120c02;outline:none}
 .hof-head{text-align:center;padding:64px 0 28px;max-width:1000px;margin:0 auto}
@@ -101,6 +101,32 @@ footer{margin-top:44px;text-align:center;font-size:12px;color:var(--mu)}
 .hof-end.in{opacity:1}
 body.hof-lock{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.hof-open,.hof-open .star,.hof-beam{animation:none!important}.hof-ov,.hof-title span,.hof-kicker,.hof-sub,.hof-ch,.hof-end{transition:none!important;animation:none!important}.hof-title span{opacity:1;transform:none;filter:none}.hof-kicker,.hof-sub,.hof-ch,.hof-end{opacity:1;transform:none}.hof-ch::before{display:none}}
+
+.hof-head{position:relative}
+.hof-ring{position:absolute;left:50%;top:58%;border-radius:50%;pointer-events:none;opacity:0;transform:translate(-50%,-50%)}
+.hof-ring.r1{width:min(560px,92vw);height:min(560px,92vw);border:2px dashed rgba(255,225,77,.45)}
+.hof-ring.r2{width:min(720px,98vw);height:min(720px,98vw);border:1px solid rgba(255,154,0,.35);box-shadow:0 0 40px rgba(255,154,0,.25) inset}
+.hof-ov.open .hof-ring{opacity:1;transition:opacity 1.2s 1s;animation:ringspin 22s linear infinite}
+.hof-ov.open .hof-ring.r2{animation-duration:34s;animation-direction:reverse}
+@keyframes ringspin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hof-title{will-change:transform}
+.hof-ov.open h2.hof-title{animation:titleglow 2.4s 2.2s ease-in-out infinite}
+@keyframes titleglow{50%{text-shadow:0 0 22px #fff,0 0 70px #ffb52e}}
+.hof-flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(255,255,230,.95),rgba(255,225,77,.35) 45%,transparent 75%);opacity:0;pointer-events:none}
+.hof-flash.boomf{animation:boomf .7s ease-out}
+@keyframes boomf{0%{opacity:.9}100%{opacity:0}}
+.hof-scroll.shake{animation:shake .55s}
+@keyframes shake{0%,100%{transform:none}15%{transform:translate(-6px,4px)}30%{transform:translate(5px,-5px)}45%{transform:translate(-4px,-3px)}60%{transform:translate(4px,3px)}80%{transform:translate(-2px,1px)}}
+.hof-snd{position:fixed;top:max(12px,env(safe-area-inset-top));right:68px;z-index:3;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,225,77,.6);background:rgba(10,6,0,.7);color:#ffe14d;font-size:18px;cursor:pointer}
+.hof-snd:hover,.hof-snd:focus-visible{background:#ffe14d;outline:none}
+.hof-ch.in{box-shadow:0 0 70px color-mix(in srgb,var(--c) 38%,transparent),inset 0 0 70px color-mix(in srgb,var(--c) 10%,transparent)}
+.hof-ch.in .badge{animation:badgepop .7s cubic-bezier(.2,1.6,.4,1) .35s backwards}
+@keyframes badgepop{from{transform:scale(.3) rotate(-8deg);opacity:0}to{transform:none;opacity:1}}
+.hof-ch.in h3{animation:h3in .8s .25s cubic-bezier(.2,1.2,.3,1) backwards}
+@keyframes h3in{from{transform:translateX(-40px);opacity:0;filter:blur(6px)}to{transform:none;opacity:1;filter:none}}
+.hof-ch.in .chips span{animation:chipin .5s backwards;animation-delay:calc(.6s + var(--n,0)*.08s)}
+@keyframes chipin{from{transform:translateY(14px) scale(.8);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.hof-ring,.hof-flash,.hof-scroll.shake,.hof-ch.in .badge,.hof-ch.in h3,.hof-ch.in .chips span{animation:none!important}.hof-ring{opacity:.5}.hof-ov.open h2.hof-title{animation:none!important}}
 </style>
 </head>
 <body>
@@ -184,7 +210,7 @@ body.hof-lock{overflow:hidden}
         <li>주인공은 검귀 카엘이며 돌진참, 지진검 같은 기술을 씁니다.</li>
         <li>캐릭터와 효과음을 파일 없이 코드로 만들어서 가볍게 실행됩니다.</li>
         <li>키보드와 마우스, 휴대폰 터치를 모두 지원합니다.</li>
-        <li>홈 화면에 추가하면 오프라인으로도 열립니다. 자세한 설명은 위 명예의 전당에 있습니다.</li>
+        <li>홈 화면에 추가하면 오프라인으로도 열립니다. 자세한 설명은 명예의 전당 화면에 있습니다.</li>
       </ul>
       </details>
       <a class="go" href="https://yeonny3209.github.io/blade-raid/" target="_blank" rel="noopener">PLAY ▶</a>
@@ -271,11 +297,15 @@ body.hof-lock{overflow:hidden}
   <footer>© Yeonny · 게임은 각자 다른 주소에서 실행됩니다</footer>
 </div>
 <div class="hof-ov" id="hof" hidden role="dialog" aria-modal="true" aria-labelledby="hofTitle">
+  <audio id="hofBgm" src="hall-of-fame.mp3" preload="none" loop></audio>
   <canvas id="hofFx" aria-hidden="true"></canvas>
+  <div class="hof-flash" id="hofFlash" aria-hidden="true"></div>
   <div class="hof-beam" aria-hidden="true"></div>
   <div class="hof-scroll" id="hofScroll">
+    <button type="button" class="hof-snd" id="hofSnd" aria-label="소리 끄기" aria-pressed="false">🔊</button>
     <button type="button" class="hof-x" id="hofClose" aria-label="명예의 전당 닫기">✕</button>
     <div class="hof-head">
+      <div class="hof-ring r1" aria-hidden="true"></div><div class="hof-ring r2" aria-hidden="true"></div>
       <div class="hof-kicker">YEONNY ARCADE</div>
       <h2 class="hof-title" id="hofTitle" aria-label="HALL OF FAME"></h2>
       <p class="hof-sub">명예의 전당 · 세 가지 이정표</p>
@@ -285,7 +315,7 @@ body.hof-lock{overflow:hidden}
       <h3>모든 것이 시작된 첫 페이지</h3>
       <p class="quote">“여기서 시작됐다.”</p>
       <p class="para">이 페이지는 처음으로 만든 게임이 태어난 곳입니다. 그 뒤로 이어진 모든 게임의 출발점이고, 그래서 명예의 전당 가장 앞자리에 둡니다.</p><p class="para">처음 만든 게임은 드래곤을 키우고, 교배하고, 3대3으로 싸우는 「드래곤 보육원 &amp; 배틀 RPG」입니다. 이 Streamlit 앱은 그 한 페이지에서 시작해 지금은 업다운 게임부터 타워 디펜스, 좀비 FPS, 리듬 게임, 워들까지 18개 페이지로 자랐습니다.</p>
-      <div class="chips"><span>첫 번째 게임</span><span>Streamlit</span><span>페이지 18개</span><span>드래곤 3대3</span></div>
+      <div class="chips"><span style="--n:0">첫 번째 게임</span><span style="--n:1">Streamlit</span><span style="--n:2">페이지 18개</span><span style="--n:3">드래곤 3대3</span></div>
       <ul>
         <li>이 버튼은 앱 안의 「드래곤 보육원 &amp; 배틀 RPG」 페이지로 바로 연결됩니다.</li>
         <li>화면은 React와 Tailwind로 만들어 Streamlit 앱 안에 끼워 넣었습니다.</li>
@@ -307,7 +337,7 @@ body.hof-lock{overflow:hidden}
       <h3>가장 잘 만든 게임</h3>
       <p class="quote">“내가 만든 것 중 가장 잘 만든 작품.”</p>
       <p class="para">직접 만든 게임 중에서 가장 잘 만들었다고 꼽은 작품입니다. 던전앤파이터 스타일의 2D 벨트스크롤 액션 RPG로, 완성도에 가장 공을 들였습니다.</p><p class="para">캐릭터 그림과 효과음을 이미지·음원 파일 없이 코드로 만들었고, 던전 10곳마다 보스를 하나씩 배치했습니다. 코드는 애니메이션, 오디오, 보스, 던전, 적, 이펙트, 로비, 터치 조작까지 18개 모듈로 나뉘어 있습니다.</p>
-      <div class="chips"><span>가장 잘 만든 게임</span><span>던전 10곳</span><span>보스 10명</span><span>모듈 18개</span><span>터치·PWA</span></div>
+      <div class="chips"><span style="--n:0">가장 잘 만든 게임</span><span style="--n:1">던전 10곳</span><span style="--n:2">보스 10명</span><span style="--n:3">모듈 18개</span><span style="--n:4">터치·PWA</span></div>
       <ul>
         <li>화면은 2D이고, 그래픽은 Canvas2D, 효과음은 WebAudio로 직접 만들었습니다.</li>
         <li>모닥불이 켜진 야영지 로비에서 가로 카드로 던전을 고릅니다.</li>
@@ -329,7 +359,7 @@ body.hof-lock{overflow:hidden}
       <h3>처음으로 도전한 3D</h3>
       <p class="quote">“평면을 벗어난 첫 번째 세계.”</p>
       <p class="para">처음으로 만든 3D 게임입니다. 평면 위에서 움직이던 게임과 달리, 이 게임에서는 처음으로 입체 공간을 달리고 날아다닙니다.</p><p class="para">React Three Fiber로 만든 「My 3D Game Universe」 안에는 하드코어 액션 RPG와 드래곤 라이더 비행 슈팅 두 가지 게임이 들어 있고, 파티·결투·거래로 친구와 함께 즐기는 멀티플레이 메뉴까지 갖췄습니다.</p>
-      <div class="chips"><span>첫 번째 3D</span><span>React Three Fiber</span><span>게임 2종</span><span>멀티플레이</span></div>
+      <div class="chips"><span style="--n:0">첫 번째 3D</span><span style="--n:1">React Three Fiber</span><span style="--n:2">게임 2종</span><span style="--n:3">멀티플레이</span></div>
       <ul>
         <li>처음으로 만든 3D 게임이고, 이름은 「My 3D Game Universe」입니다.</li>
         <li>하드코어 액션 RPG와 드래곤 라이더 비행 슈팅, 두 가지 게임을 담았습니다.</li>
@@ -352,73 +382,237 @@ body.hof-lock{overflow:hidden}
 
 <script>
 (function () {
-  var ov = document.getElementById('hof'), openBtn = document.getElementById('hofOpen'), closeBtn = document.getElementById('hofClose');
-  var title = document.getElementById('hofTitle'), scroller = document.getElementById('hofScroll'), cv = document.getElementById('hofFx');
+  var $ = function (id) { return document.getElementById(id); };
+  var ov = $('hof'), openBtn = $('hofOpen'), closeBtn = $('hofClose'), sndBtn = $('hofSnd');
+  var title = $('hofTitle'), scroller = $('hofScroll'), cv = $('hofFx'), bgm = $('hofBgm'), flash = $('hofFlash'), beam = ov.querySelector('.hof-beam');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var timers = [], raf = 0, parts = [], running = false, lastFocus = null;
-  // 제목 글자를 하나씩 나타나게 쪼갠다
+  var timers = [], raf = 0, running = false, lastFocus = null;
+  var rockets = [], sparks = [], confetti = [], t0 = 0, pulse = 0;
+  var muted = false;
+  try { muted = localStorage.getItem('hofMute') === '1'; } catch (e) { }
+
+  // ---------- 제목 글자 쪼개기 ----------
   'HALL OF FAME'.split('').forEach(function (ch, i) {
     var s = document.createElement('span');
     s.style.setProperty('--i', i);
     s.textContent = ch === ' ' ? ' ' : ch;
     title.appendChild(s);
   });
-  function sizeCv() { var d = Math.min(2, window.devicePixelRatio || 1); cv.width = innerWidth * d; cv.height = innerHeight * d; }
-  function spawn(burst) {
-    var n = burst ? 90 : 1;
-    for (var i = 0; i < n; i++) {
-      var a = Math.random() * Math.PI * 2, sp = burst ? (2 + Math.random() * 7) : 0;
-      var life = burst ? 90 + Math.random() * 60 : 260 + Math.random() * 200;
-      parts.push({
-        x: burst ? innerWidth / 2 : Math.random() * innerWidth, y: burst ? innerHeight * 0.28 : innerHeight + 10,
-        vx: Math.cos(a) * sp, vy: burst ? Math.sin(a) * sp - 2 : -(0.6 + Math.random() * 1.6), g: burst ? 0.12 : 0,
-        life: life, max: life, r: burst ? 1.5 + Math.random() * 3 : 1 + Math.random() * 2.4, h: 40 + Math.random() * 20
-      });
+
+  // ---------- 소리: 직접 만든 배경음악 + 합성 효과음 ----------
+  var AC = window.AudioContext || window.webkitAudioContext;
+  var ac = null, master = null, analyser = null, freq = null, routed = false, noiseBuf = null;
+  function ensureAudio() {
+    if (!AC) return false;
+    if (!ac) {
+      try {
+        ac = new AC(); master = ac.createGain(); master.gain.value = muted ? 0 : 1;
+        analyser = ac.createAnalyser(); analyser.fftSize = 128; analyser.smoothingTimeConstant = 0.75;
+        freq = new Uint8Array(analyser.frequencyBinCount);
+        master.connect(analyser); analyser.connect(ac.destination);
+        var n = ac.sampleRate; noiseBuf = ac.createBuffer(1, n, ac.sampleRate); var d = noiseBuf.getChannelData(0);
+        for (var i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+        // 파일(file://)로 열면 브라우저가 음악 분석을 막아 소리가 끊기므로 http(s)에서만 연결한다
+        if (/^https?:/.test(location.protocol)) { var src = ac.createMediaElementSource(bgm); src.connect(master); routed = true; }
+      } catch (e) { ac = null; return false; }
     }
+    if (ac.state === 'suspended') ac.resume();
+    return true;
+  }
+  function tone(type, f0, f1, dur, vol, delay) {
+    if (!ac || muted) return;
+    var t = ac.currentTime + (delay || 0), o = ac.createOscillator(), g = ac.createGain();
+    o.type = type; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(Math.max(20, f1), t + dur);
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + dur + 0.05);
+  }
+  function noise(dur, vol, f0, f1, type, delay) {
+    if (!ac || muted) return;
+    var t = ac.currentTime + (delay || 0), s = ac.createBufferSource(); s.buffer = noiseBuf;
+    var f = ac.createBiquadFilter(); f.type = type || 'lowpass';
+    f.frequency.setValueAtTime(f0, t); f.frequency.exponentialRampToValueAtTime(Math.max(30, f1), t + dur);
+    var g = ac.createGain(); g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+    s.connect(f); f.connect(g); g.connect(master); s.start(t, Math.random() * 0.4); s.stop(t + dur + 0.05);
+  }
+  var sfx = {
+    whoosh: function () { noise(1.4, 0.35, 200, 5000, 'bandpass'); tone('sawtooth', 90, 700, 1.3, 0.05); },
+    tick: function (i) { tone('triangle', 900 + i * 90, 900 + i * 90, 0.06, 0.07); },
+    boom: function () { tone('sine', 130, 28, 0.9, 0.55); noise(0.9, 0.5, 2400, 70, 'lowpass'); tone('sawtooth', 60, 30, 0.8, 0.12); },
+    reveal: function () { [523, 659, 784, 1046, 1318].forEach(function (f, i) { tone('triangle', f, f, 0.45, 0.1, i * 0.07); tone('sine', f * 2, f * 2, 0.35, 0.04, i * 0.07); }); noise(0.5, 0.18, 6000, 1500, 'highpass'); },
+    whistle: function () { tone('sine', 500 + Math.random() * 300, 1500, 0.35, 0.05); },
+    pop: function () { noise(0.4, 0.28, 5000, 300, 'lowpass'); tone('sine', 220, 60, 0.25, 0.2); noise(0.6, 0.09, 9000, 4000, 'highpass', 0.05); },
+    finale: function () { [392, 523, 659, 784, 1046, 1318, 1568].forEach(function (f, i) { tone('square', f, f, 0.6, 0.05, i * 0.09); tone('triangle', f / 2, f / 2, 0.7, 0.08, i * 0.09); }); }
+  };
+  function applyMute() {
+    if (master) master.gain.value = muted ? 0 : 1;
+    bgm.muted = routed ? false : muted; // 연결된 경우 master 가 음소거를 처리하고, 아니면 직접 음소거한다
+    sndBtn.textContent = muted ? '🔇' : '🔊';
+    sndBtn.setAttribute('aria-pressed', muted ? 'true' : 'false');
+    sndBtn.setAttribute('aria-label', muted ? '소리 켜기' : '소리 끄기');
+    try { localStorage.setItem('hofMute', muted ? '1' : '0'); } catch (e) { }
+  }
+  var fadeT = 0;
+  function fadeMusic(to, ms, done) {
+    clearInterval(fadeT);
+    var from = bgm.volume, steps = Math.max(1, ms / 50), i = 0;
+    fadeT = setInterval(function () {
+      i++; bgm.volume = Math.max(0, Math.min(1, from + (to - from) * (i / steps)));
+      if (i >= steps) { clearInterval(fadeT); if (done) done(); }
+    }, 50);
+  }
+  function startMusic() {
+    bgm.currentTime = 0; bgm.volume = 0; bgm.loop = true;
+    var p = bgm.play(); if (p && p.catch) p.catch(function () { });
+    fadeMusic(0.8, 2500);
+  }
+
+  // ---------- 불꽃 · 색종이 · 스펙트럼 ----------
+  var COLORS = ['#ffe14d', '#ffb52e', '#ff3df0', '#29f0ff', '#7dffb8', '#ffffff', '#ff6a1a'];
+  function size() { var d = Math.min(2, window.devicePixelRatio || 1); cv.width = innerWidth * d; cv.height = innerHeight * d; }
+  function launch(x, color) {
+    rockets.push({ x: x == null ? innerWidth * (0.12 + Math.random() * 0.76) : x, y: innerHeight + 10, vy: -(9 + Math.random() * 4), ty: innerHeight * (0.12 + Math.random() * 0.32), c: color || COLORS[Math.floor(Math.random() * COLORS.length)], px: 0, py: 0 });
+    sfx.whistle();
+  }
+  function explodeAt(x, y, color, n) {
+    n = n || 70;
+    var ring = Math.random() < 0.4;
+    for (var i = 0; i < n; i++) {
+      var a = ring ? (i / n) * 6.283 : Math.random() * 6.283, sp = ring ? 4.2 : 1.5 + Math.random() * 5;
+      sparks.push({ x: x, y: y, px: x, py: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, life: 55 + Math.random() * 40, max: 95, c: Math.random() < 0.25 ? '#ffffff' : color });
+    }
+    sfx.pop();
+  }
+  function confettiBurst(x, y, n, color) {
+    for (var i = 0; i < n; i++) {
+      var a = -Math.PI / 2 + (Math.random() - 0.5) * 2.4, sp = 5 + Math.random() * 11;
+      confetti.push({ x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, w: 5 + Math.random() * 6, h: 3 + Math.random() * 5, r: Math.random() * 6.283, vr: (Math.random() - 0.5) * 0.4, c: color && Math.random() < 0.5 ? color : COLORS[Math.floor(Math.random() * COLORS.length)], life: 220 + Math.random() * 120 });
+    }
+  }
+  function bassLevel() {
+    if (routed && analyser) {
+      analyser.getByteFrequencyData(freq);
+      var s = 0; for (var i = 0; i < 6; i++) s += freq[i];
+      return s / 6 / 255;
+    }
+    var t = (performance.now() - t0) / 1000; // 분석이 막힌 경우: 박자 느낌의 가짜 맥박
+    return muted ? 0 : 0.35 + 0.35 * Math.pow(Math.max(0, Math.sin(t * 6.4)), 6);
   }
   function frame() {
     if (!running) return;
-    var d = Math.min(2, window.devicePixelRatio || 1), x = cv.getContext('2d');
-    x.setTransform(d, 0, 0, d, 0, 0); x.clearRect(0, 0, innerWidth, innerHeight); x.globalCompositeOperation = 'lighter';
-    if (parts.length < 160 && Math.random() < 0.5) spawn(false);
-    for (var i = parts.length - 1; i >= 0; i--) {
-      var p = parts[i]; p.life--; p.x += p.vx; p.y += p.vy; p.vy += p.g; p.vx *= 0.985;
-      if (p.life <= 0 || p.y < -20) { parts.splice(i, 1); continue; }
-      var k = p.life / p.max; x.globalAlpha = Math.min(1, k * 1.6);
-      x.fillStyle = 'hsl(' + p.h + ',100%,' + (55 + k * 25) + '%)'; x.beginPath(); x.arc(p.x, p.y, p.r * (0.5 + k), 0, 6.283); x.fill();
+    var d = Math.min(2, window.devicePixelRatio || 1), x = cv.getContext('2d'), W = innerWidth, H = innerHeight, i, p;
+    x.setTransform(d, 0, 0, d, 0, 0); x.clearRect(0, 0, W, H);
+    // 박자에 맞춰 제목과 광선이 맥박친다
+    var b = bassLevel(); pulse += (b - pulse) * 0.35;
+    title.style.transform = 'scale(' + (1 + pulse * 0.045).toFixed(3) + ')';
+    beam.style.filter = 'brightness(' + (1 + pulse * 1.4).toFixed(2) + ')';
+    x.globalCompositeOperation = 'lighter';
+    // 하단 스펙트럼
+    var bars = 48, bw = W / bars;
+    if (routed && analyser) analyser.getByteFrequencyData(freq);
+    for (i = 0; i < bars; i++) {
+      var v;
+      if (routed && analyser) v = freq[Math.floor(i * freq.length / bars)] / 255;
+      else { var tt = (performance.now() - t0) / 1000; v = muted ? 0.04 : 0.18 + 0.3 * Math.abs(Math.sin(tt * 3 + i * 0.5)) * (0.4 + 0.6 * Math.abs(Math.sin(tt * 1.3 + i * 0.2))); }
+      var h = 6 + v * H * 0.22;
+      var g = x.createLinearGradient(0, H, 0, H - h); g.addColorStop(0, 'rgba(255,181,46,0.55)'); g.addColorStop(1, 'rgba(255,225,77,0)');
+      x.fillStyle = g; x.fillRect(i * bw + 2, H - h, bw - 4, h);
     }
+    // 로켓
+    for (i = rockets.length - 1; i >= 0; i--) {
+      p = rockets[i]; p.px = p.x; p.py = p.y; p.y += p.vy; p.vy *= 0.985;
+      x.globalAlpha = 1; x.strokeStyle = p.c; x.lineWidth = 2.5; x.beginPath(); x.moveTo(p.px, p.py + 14); x.lineTo(p.x, p.y); x.stroke();
+      if (p.y <= p.ty || p.vy > -2.4) { explodeAt(p.x, p.y, p.c, 80); flash.classList.remove('boomf'); void flash.offsetWidth; flash.classList.add('boomf'); rockets.splice(i, 1); }
+    }
+    // 불꽃 입자 (꼬리 포함)
+    for (i = sparks.length - 1; i >= 0; i--) {
+      p = sparks[i]; p.life--; p.px = p.x; p.py = p.y; p.x += p.vx; p.y += p.vy; p.vy += 0.07; p.vx *= 0.985; p.vy *= 0.985;
+      if (p.life <= 0) { sparks.splice(i, 1); continue; }
+      var k = p.life / p.max; x.globalAlpha = Math.min(1, k * 1.5); x.strokeStyle = p.c; x.lineWidth = 1 + k * 2;
+      x.beginPath(); x.moveTo(p.px, p.py); x.lineTo(p.x, p.y); x.stroke();
+    }
+    // 색종이
+    x.globalCompositeOperation = 'source-over';
+    for (i = confetti.length - 1; i >= 0; i--) {
+      p = confetti[i]; p.life--; p.vy += 0.22; p.vx *= 0.985; p.vy *= 0.985; p.x += p.vx + Math.sin(p.life * 0.1) * 0.8; p.y += p.vy; p.r += p.vr;
+      if (p.life <= 0 || p.y > H + 20) { confetti.splice(i, 1); continue; }
+      x.globalAlpha = Math.min(1, p.life / 40); x.save(); x.translate(p.x, p.y); x.rotate(p.r); x.scale(1, Math.abs(Math.cos(p.r * 1.7)) + 0.15);
+      x.fillStyle = p.c; x.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); x.restore();
+    }
+    // 은은한 금빛 먼지
+    if (sparks.length < 400 && Math.random() < 0.6) {
+      sparks.push({ x: Math.random() * W, y: H + 6, px: 0, py: 0, vx: (Math.random() - 0.5) * 0.4, vy: -(0.5 + Math.random() * 1.4), life: 200 + Math.random() * 120, max: 320, c: '#ffd24d' });
+    }
+    x.globalAlpha = 1;
     raf = requestAnimationFrame(frame);
   }
+
+  // ---------- 열기 / 닫기 ----------
   function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function shake() { scroller.classList.remove('shake'); void scroller.offsetWidth; scroller.classList.add('shake'); }
+  function doFlash() { flash.classList.remove('boomf'); void flash.offsetWidth; flash.classList.add('boomf'); }
+  function chapterColor(el) { return (el.style.getPropertyValue('--c') || '#ffe14d').trim(); }
   function open() {
     lastFocus = document.activeElement; ov.hidden = false; document.body.classList.add('hof-lock');
-    scroller.scrollTop = 0;
+    scroller.scrollTop = 0; t0 = performance.now(); pulse = 0;
     [].forEach.call(ov.querySelectorAll('.hof-ch,.hof-end'), function (e) { e.classList.remove('in'); });
     void ov.offsetWidth; ov.classList.add('open');
-    var steps = reduce ? [0, 0, 0, 0] : [1700, 2500, 3300, 4100];
+    var ok = ensureAudio(); applyMute();
+    if (ok) { sfx.whoosh(); }
+    startMusic();
     var els = ov.querySelectorAll('.hof-ch,.hof-end');
-    [].forEach.call(els, function (e, i) { later(function () { e.classList.add('in'); if (!reduce && i < 3) spawn(true); }, steps[i]); });
-    if (!reduce) { sizeCv(); parts = []; running = true; spawn(true); later(function () { spawn(true); }, 700); raf = requestAnimationFrame(frame); }
+    var steps = reduce ? [0, 0, 0, 0] : [1900, 2800, 3700, 4700];
+    if (!reduce) {
+      for (var i = 0; i < 12; i++) (function (i) { later(function () { sfx.tick(i); }, 450 + i * 70); })(i);
+      later(function () { sfx.boom(); doFlash(); shake(); confettiBurst(innerWidth / 2, innerHeight * 0.3, 140); }, 1400);
+      size(); rockets = []; sparks = []; confetti = []; running = true;
+      launch(innerWidth * 0.25); later(function () { launch(innerWidth * 0.75); }, 300); later(function () { launch(innerWidth * 0.5); }, 650);
+      raf = requestAnimationFrame(frame);
+    }
+    [].forEach.call(els, function (e, idx) {
+      later(function () {
+        e.classList.add('in');
+        if (idx < 3) {
+          sfx.reveal();
+          if (!reduce) {
+            var c = chapterColor(e);
+            doFlash(); shake();
+            var rr = e.getBoundingClientRect();
+            confettiBurst(rr.left + rr.width * (idx === 1 ? 0.5 : idx === 0 ? 0.2 : 0.8), Math.min(innerHeight * 0.6, Math.max(140, rr.top + 60)), 70, c);
+            launch(innerWidth * (idx === 0 ? 0.2 : idx === 1 ? 0.5 : 0.8), c);
+          }
+        } else {
+          sfx.finale();
+          if (!reduce) { for (var k = 0; k < 6; k++) (function (k) { later(function () { launch(); }, k * 220); })(k); confettiBurst(innerWidth / 2, innerHeight * 0.9, 160); doFlash(); }
+        }
+      }, steps[idx]);
+    });
+    // 이후에도 가끔 불꽃을 쏘아 올린다
+    if (!reduce) later(function loop() { if (!running) return; launch(); timers.push(setTimeout(loop, 1400 + Math.random() * 1800)); }, 6200);
     closeBtn.focus({ preventScroll: true });
   }
   function close() {
-    ov.classList.remove('open'); timers.forEach(clearTimeout); timers = []; running = false; cancelAnimationFrame(raf);
-    setTimeout(function () { ov.hidden = true; document.body.classList.remove('hof-lock'); }, reduce ? 0 : 450);
+    ov.classList.remove('open'); timers.forEach(clearTimeout); timers = [];
+    fadeMusic(0, 600, function () { bgm.pause(); });
+    setTimeout(function () { running = false; cancelAnimationFrame(raf); ov.hidden = true; document.body.classList.remove('hof-lock'); title.style.transform = ''; }, reduce ? 0 : 650);
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
   }
   openBtn.addEventListener('click', open); closeBtn.addEventListener('click', close);
+  sndBtn.addEventListener('click', function () { muted = !muted; applyMute(); if (!muted && ac && ac.state === 'suspended') ac.resume(); });
   ov.addEventListener('click', function (e) { if (e.target === ov || e.target === scroller) close(); });
   addEventListener('keydown', function (e) {
     if (ov.hidden) return;
     if (e.key === 'Escape') { close(); return; }
-    if (e.key === 'Tab') { // 대화상자 안에서만 포커스 이동
+    if (e.key === 'm' || e.key === 'M') { muted = !muted; applyMute(); return; }
+    if (e.key === 'Tab') {
       var f = [].slice.call(ov.querySelectorAll('a[href],button')); if (!f.length) return;
       var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
-  addEventListener('resize', function () { if (running) sizeCv(); });
+  document.addEventListener('visibilitychange', function () { if (document.hidden && !ov.hidden) { bgm.pause(); } else if (!document.hidden && !ov.hidden) { var p = bgm.play(); if (p && p.catch) p.catch(function () { }); } });
+  addEventListener('resize', function () { if (running) size(); });
+  applyMute();
 })();
 
 </script>
