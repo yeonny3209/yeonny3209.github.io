@@ -127,6 +127,11 @@ body.hof-lock{overflow:hidden}
 .hof-ch.in .chips span{animation:chipin .5s backwards;animation-delay:calc(.6s + var(--n,0)*.08s)}
 @keyframes chipin{from{transform:translateY(14px) scale(.8);opacity:0}to{transform:none;opacity:1}}
 @media (prefers-reduced-motion:reduce){.hof-ring,.hof-flash,.hof-scroll.shake,.hof-ch.in .badge,.hof-ch.in h3,.hof-ch.in .chips span{animation:none!important}.hof-ring{opacity:.5}.hof-ov.open h2.hof-title{animation:none!important}}
+.hof-vid{margin:4px 0 14px;position:relative;border:1.5px solid color-mix(in srgb,var(--c) 60%,#000);box-shadow:0 0 34px color-mix(in srgb,var(--c) 30%,transparent);background:#000;aspect-ratio:16/9;overflow:hidden;max-width:820px}
+.hof-vid video{width:100%;height:100%;display:block;object-fit:contain}
+.hof-vid figcaption{position:absolute;left:0;right:0;bottom:0;padding:6px 10px;font:700 11px Orbitron,'Noto Sans KR',sans-serif;letter-spacing:.08em;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+.hof-ch.in .hof-vid{animation:vidin .9s .45s cubic-bezier(.2,1.2,.3,1) backwards}
+@keyframes vidin{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
 </style>
 <link rel="stylesheet" href="games.css">
 </head>
@@ -230,6 +235,7 @@ body.hof-lock{overflow:hidden}
       <div class="badge">FIRST PAGE · 첫 번째 페이지</div>
       <h3>모든 것이 시작된 첫 페이지</h3>
       <p class="quote">“여기서 시작됐다.”</p>
+      <figure class="hof-vid"><video muted loop playsinline preload="none" data-src="media/dragon.mp4"></video><figcaption>● PLAY FOOTAGE · 드래곤 보육원 &amp; 배틀 RPG · 직접 플레이</figcaption></figure>
       <p class="para">이 페이지는 처음으로 만든 게임이 태어난 곳입니다. 그 뒤로 이어진 모든 게임의 출발점이고, 그래서 명예의 전당 가장 앞자리에 둡니다.</p><p class="para">처음 만든 게임은 드래곤을 키우고, 교배하고, 3대3으로 싸우는 「드래곤 보육원 &amp; 배틀 RPG」입니다. 이 Streamlit 앱은 그 한 페이지에서 시작해 지금은 업다운 게임부터 타워 디펜스, 좀비 FPS, 리듬 게임, 워들까지 18개 페이지로 자랐습니다.</p>
       <div class="chips"><span style="--n:0">첫 번째 게임</span><span style="--n:1">Streamlit</span><span style="--n:2">페이지 18개</span><span style="--n:3">드래곤 3대3</span></div>
       <ul>
@@ -252,6 +258,7 @@ body.hof-lock{overflow:hidden}
       <div class="badge">THE BEST · 가장 잘 만든 게임</div>
       <h3>가장 잘 만든 게임</h3>
       <p class="quote">“내가 만든 것 중 가장 잘 만든 작품.”</p>
+      <figure class="hof-vid"><video muted loop playsinline preload="none" data-src="media/bladeraid.mp4"></video><figcaption>● PLAY FOOTAGE · 어둠의 숲 · 직접 플레이</figcaption></figure>
       <p class="para">직접 만든 게임 중에서 가장 잘 만들었다고 꼽은 작품입니다. 던전앤파이터 스타일의 2D 벨트스크롤 액션 RPG로, 완성도에 가장 공을 들였습니다.</p><p class="para">캐릭터 그림과 효과음을 이미지·음원 파일 없이 코드로 만들었고, 던전 10곳마다 보스를 하나씩 배치했습니다. 코드는 애니메이션, 오디오, 보스, 던전, 적, 이펙트, 로비, 터치 조작까지 18개 모듈로 나뉘어 있습니다.</p>
       <div class="chips"><span style="--n:0">가장 잘 만든 게임</span><span style="--n:1">던전 10곳</span><span style="--n:2">보스 10명</span><span style="--n:3">모듈 18개</span><span style="--n:4">터치·PWA</span></div>
       <ul>
@@ -274,11 +281,12 @@ body.hof-lock{overflow:hidden}
       <div class="badge">FIRST 3D · 첫 번째 3D 게임</div>
       <h3>처음으로 도전한 3D</h3>
       <p class="quote">“평면을 벗어난 첫 번째 세계.”</p>
-      <p class="para">처음으로 만든 3D 게임입니다. 평면 위에서 움직이던 게임과 달리, 이 게임에서는 처음으로 입체 공간을 달리고 날아다닙니다.</p><p class="para">React Three Fiber로 만든 「My 3D Game Universe」 안에는 하드코어 액션 RPG와 드래곤 라이더 비행 슈팅 두 가지 게임이 들어 있고, 파티·결투·거래로 친구와 함께 즐기는 멀티플레이 메뉴까지 갖췄습니다.</p>
-      <div class="chips"><span style="--n:0">첫 번째 3D</span><span style="--n:1">React Three Fiber</span><span style="--n:2">게임 2종</span><span style="--n:3">멀티플레이</span></div>
+      <figure class="hof-vid"><video muted loop playsinline preload="none" data-src="media/portal3d.mp4"></video><figcaption>● PLAY FOOTAGE · Dragon Rider 1단계 · 알 도둑 · 직접 플레이</figcaption></figure>
+      <p class="para">처음으로 만든 3D 게임입니다. 평면 위에서 움직이던 게임과 달리, 이 게임에서는 처음으로 입체 공간을 달리고 날아다닙니다.</p><p class="para">React Three Fiber로 만든 「My 3D Game Universe」 안에는 하드코어 액션 RPG 「끝없는 수련」, 알을 훔쳐 부화시키고 하늘에서 싸우는 「드래곤 라이더」, 점프맵 「시련의 탑」, 방탈출 「잠긴 방」까지 네 개의 3D 게임이 들어 있고, 파티·결투·거래로 친구와 함께 즐기는 멀티플레이 메뉴까지 갖췄습니다.</p>
+      <div class="chips"><span style="--n:0">첫 번째 3D</span><span style="--n:1">React Three Fiber</span><span style="--n:2">게임 4종</span><span style="--n:3">멀티플레이</span></div>
       <ul>
         <li>처음으로 만든 3D 게임이고, 이름은 「My 3D Game Universe」입니다.</li>
-        <li>하드코어 액션 RPG와 드래곤 라이더 비행 슈팅, 두 가지 게임을 담았습니다.</li>
+        <li>하드코어 액션 RPG(9개 직업 · 6차 전직 · PVP), 드래곤 라이더(잠입 · 부화 · 비행 슈팅), 시련의 탑(점프맵 · 타임어택), 잠긴 방(방탈출) 네 가지 게임을 담았습니다.</li>
         <li>설치 없이 브라우저에서 바로 플레이합니다.</li>
         <li>RPG에는 직업 선택과 전직관이 있어 캐릭터를 성장시킵니다.</li>
         <li>같이 하기 메뉴에서 파티 초대, 결투 신청, 거래 신청을 할 수 있습니다.</li>
@@ -474,6 +482,7 @@ body.hof-lock{overflow:hidden}
     void ov.offsetWidth; ov.classList.add('open');
     var ok = ensureAudio(); applyMute();
     if (ok) { sfx.whoosh(); }
+    [].forEach.call(ov.querySelectorAll('.hof-vid video'), function (v) { if (!v.src) v.src = v.dataset.src; v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function () { }); });
     startMusic();
     var els = ov.querySelectorAll('.hof-ch,.hof-end');
     var steps = reduce ? [0, 0, 0, 0] : [1900, 2800, 3700, 4700];
@@ -507,6 +516,7 @@ body.hof-lock{overflow:hidden}
     closeBtn.focus({ preventScroll: true });
   }
   function close() {
+    [].forEach.call(ov.querySelectorAll('.hof-vid video'), function (v) { v.pause(); });
     ov.classList.remove('open'); timers.forEach(clearTimeout); timers = [];
     fadeMusic(0, 600, function () { bgm.pause(); });
     setTimeout(function () { running = false; cancelAnimationFrame(raf); ov.hidden = true; document.body.classList.remove('hof-lock'); title.style.transform = ''; }, reduce ? 0 : 650);
