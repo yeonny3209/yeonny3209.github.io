@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#07060d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Nanum+Myeongjo:wght@800&family=Noto+Sans+KR:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#07060d;--panel:#100d24;--line:#2e2a55;--tx:#e8ecff;--mu:#8a90b0;--cy:#29f0ff;--mg:#ff3df0;--ye:#ffe14d}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -128,13 +128,14 @@ body.hof-lock{overflow:hidden}
 @keyframes chipin{from{transform:translateY(14px) scale(.8);opacity:0}to{transform:none;opacity:1}}
 @media (prefers-reduced-motion:reduce){.hof-ring,.hof-flash,.hof-scroll.shake,.hof-ch.in .badge,.hof-ch.in h3,.hof-ch.in .chips span{animation:none!important}.hof-ring{opacity:.5}.hof-ov.open h2.hof-title{animation:none!important}}
 </style>
+<link rel="stylesheet" href="games.css">
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="logo">YEONNY ARCADE</div>
     <div class="sub">GAME COLLECTION</div>
-    <p class="lead">내가 만든 게임 중에서 잘 만든 것만 모았습니다. 「상세 설명 보기」를 누르면 자세한 설명이 펼쳐지고, 아래 버튼을 누르면 새 탭에서 열립니다.</p>
+    <p class="lead">내가 만든 게임 중에서 잘 만든 것만 모았습니다. 「상세 설명 보기」를 누르면 플레이 영상과 자세한 설명 창이 열리고, 아래 버튼을 누르면 새 탭에서 열립니다.</p>
     <button type="button" class="hof-open" id="hofOpen" aria-haspopup="dialog"><span class="star">★</span> 명예의 전당 <span class="star">★</span></button>
   </header>
 
@@ -144,19 +145,8 @@ body.hof-lock{overflow:hidden}
       <span class="tag">새 게임 · 오토배틀러</span>
       <h3>일곱 군주의 탁자</h3>
       <p class="lead2">AI 군주 7명과 겨루는 브라우저 오토배틀러입니다. 배치는 전략, 주문은 전술.</p>
-      <details class="more">
-        <summary>상세 설명 보기 <small>(7줄)</small></summary>
-        <ul>
-        <li>상점에서 유닛을 사서 8×7 격자 보드에 배치하면, 전투는 자동으로 진행됩니다.</li>
-        <li>플레이어는 군주 마나로 주문을 직접 시전해 전투에 끼어듭니다. 배치는 전략, 주문은 전술입니다.</li>
-        <li>유닛은 90종이고, 같은 유닛 3개를 합치면 ★2, ★3로 강해집니다.</li>
-        <li>화염, 서리, 숲, 망령, 기계, 별빛 6계열과 수호자, 돌격대, 저격수, 주술사, 암살자, 치유사 6역할, 합쳐서 시너지 12종이 있습니다.</li>
-        <li>AI 군주 7명과 겨루고, 쉬움, 보통, 어려움 난이도가 있습니다. 화면 밖 AI끼리의 전투도 실제로 계산합니다.</li>
-        <li>군주 주문 16종, 증강 80종, 아이템 조합 36가지가 있어서 판마다 빌드가 달라집니다.</li>
-        <li>이자와 연승·연패 보너스 같은 경제 요소가 있고, 라운드마다 자동 저장됩니다.</li>
-        </ul>
-      </details>
       <span class="meta">외부 이미지나 서버 없이 HTML 파일 하나로 동작합니다.</span>
+      <button type="button" class="more-btn" data-game="sevenlords">상세 설명 보기 <span>플레이 영상 · 시스템 · 조작법 ▶</span></button>
       <a class="go" href="https://yeonny3209.github.io/seven-lords-table/" target="_blank" rel="noopener">PLAY ▶</a>
     </article>
 
@@ -164,30 +154,8 @@ body.hof-lock{overflow:hidden}
       <span class="tag">로그라이트 슈팅 · 시즌 2 업데이트</span>
       <h3>오버클럭</h3>
       <p class="lead2">기계 군단이 점령한 도시의 네 구역을 돌파해 중앙 서버를 끄는 탑다운 슈팅입니다. 시즌 1을 클리어하면 도시 아래로 내려가는 시즌 2 「언더그라운드」가 열립니다.</p>
-      <details class="more">
-        <summary>시즌 1 · 상세 설명 보기 <small>(6줄)</small></summary>
-        <ul>
-        <li>구역은 폐차장, 냉각 시설, 발전소, 중앙 서버 4곳이고, 구역마다 갈림길 지도를 골라 내려갑니다.</li>
-        <li>요원은 12명이고 각자 고유 스킬이 있습니다. 레인만 처음부터 쓸 수 있고 나머지는 조건을 채우거나 코어 칩으로 해금합니다.</li>
-        <li>속성이 14종이고 속성마다 상태 이상이 달라서, 불은 지속 피해, 얼음은 빙결, 어둠은 처형, 바람은 벽 충돌처럼 서로 겹치지 않습니다.</li>
-        <li>같은 태그 강화를 9개 모으면 속성마다 다른 프리즘 각성이 켜집니다.</li>
-        <li>보스 4체, 무기 16종, 강화 90여 개, 이벤트 37종, 오버클럭 모드, 적 해킹, 무기 융합이 있습니다.</li>
-        <li>캠페인, 무한 아레나, 일일 도전, 하드 모드를 지원하고 진행 중인 판이 자동 저장됩니다.</li>
-      </ul>
-      </details>
-      <details class="more">
-        <summary>★ 시즌 2 「언더그라운드」 소개 <small>(7줄)</small></summary>
-        <ul>
-        <li>마더보드를 끄고 돌아온 요원을 한지석 국장이 체포하려 하고, 통신관 유나의 도움으로 도시 아래로 탈출하며 이야기가 이어집니다.</li>
-        <li>새 구역 4곳: 지하철 차량기지, 지하 수로, 외곽 3구역, 지하 3층 벙커. 열차 선로, 차오르는 물, 긴 정전, 벙커 장악 교대 같은 지형 장치가 있습니다.</li>
-        <li>새 보스 4체: 정면 방패의 레드라인, 물속에 숨는 리바이어던, 사라졌던 요원 07 시우, 그리고 국장의 AI 센티넬.</li>
-        <li>구조 노드에서 사라진 요원들을 구하면 동료 효과를 얻고, 승인 키 11개를 모으는 것이 목표가 됩니다.</li>
-        <li>이벤트 선택에 따라 이탈 저항군, 마더보드, 빛 없는 자들의 평판이 바뀌고, 마지막 보스전에서 마더보드의 손을 잡을지 고를 수 있습니다.</li>
-        <li>선택에 따라 재가동, 셧다운, 공개의 세 가지 엔딩이 나뉘고, 누가 옳은지는 끝까지 정해 주지 않습니다.</li>
-        <li>새 요원 유나와 시우, 새 무기 2종, 이벤트 30종, 장면과 인물 초상화가 나오는 컷씬이 추가됐습니다.</li>
-      </ul>
-      </details>
       <span class="meta">안드로이드 앱(APK)도 있습니다.</span>
+      <button type="button" class="more-btn" data-game="overclock">상세 설명 보기 <span>플레이 영상 · 시스템 · 조작법 ▶</span></button>
       <a class="go" href="https://yeonny3209.github.io/overclock/" target="_blank" rel="noopener">PLAY ▶</a>
     </article>
 
@@ -195,18 +163,7 @@ body.hof-lock{overflow:hidden}
       <span class="tag">디펜스</span>
       <h3>네온 코어 디펜스</h3>
       <p class="lead2">방어탑 52종, 증강 1250종, 온라인 협동전을 지원하는 2D 타워 디펜스입니다.</p>
-      <details class="more">
-        <summary>상세 설명 보기 <small>(7줄)</small></summary>
-        <ul>
-        <li>코어를 지키기 위해 길목에 방어탑을 세우고, 웨이브마다 몰려오는 침공체를 막습니다.</li>
-        <li>방어탑은 개틀링 포, 미사일 포드, 광자포, 빙결 폭풍, 용암 분출구, 중력 우물, 시간 가속기 등 52종입니다.</li>
-        <li>침공체는 드론, 질주체, 중장갑, 비행체, 분열체, 재생체, 차폐체, 위상체, 파괴자 같은 종류가 나옵니다.</li>
-        <li>지형은 새벽 회랑, 이중 나선, 쌍둥이 관문, 미궁 코어이고 난이도는 훈련, 정규, 말살입니다.</li>
-        <li>웨이브가 끝나면 증강 중 하나를 골라 방어탑을 강하게 만듭니다. 증강은 1250종입니다.</li>
-        <li>방 코드를 만들어 친구와 협동전을 하거나, 두 사람이 번갈아 하는 대전도 할 수 있습니다.</li>
-        <li>지형마다 최고 점수와 도달 웨이브를 기록하고, 효과음과 배경음은 끌 수 있습니다.</li>
-      </ul>
-      </details>
+      <button type="button" class="more-btn" data-game="neondefense">상세 설명 보기 <span>플레이 영상 · 시스템 · 조작법 ▶</span></button>
       <a class="go" href="https://yeonny3209.github.io/neon-core-defense/" target="_blank" rel="noopener">PLAY ▶</a>
     </article>
 
@@ -214,17 +171,7 @@ body.hof-lock{overflow:hidden}
       <span class="tag">액션 RPG</span>
       <h3>블레이드 레이드</h3>
       <p class="lead2">던전앤파이터 스타일의 2D 벨트스크롤 액션 RPG입니다.</p>
-      <details class="more">
-        <summary>상세 설명 보기 <small>(6줄)</small></summary>
-        <ul>
-        <li>야영지 로비에서 던전을 고르고 들어가 몬스터를 베며 앞으로 나아갑니다.</li>
-        <li>던전 10곳에 각각 보스가 있고, 앞의 던전을 클리어해야 다음이 열립니다.</li>
-        <li>주인공은 검귀 카엘이며 돌진참, 지진검 같은 기술을 씁니다.</li>
-        <li>캐릭터와 효과음을 파일 없이 코드로 만들어서 가볍게 실행됩니다.</li>
-        <li>키보드와 마우스, 휴대폰 터치를 모두 지원합니다.</li>
-        <li>홈 화면에 추가하면 오프라인으로도 열립니다. 자세한 설명은 명예의 전당 화면에 있습니다.</li>
-      </ul>
-      </details>
+      <button type="button" class="more-btn" data-game="bladeraid">상세 설명 보기 <span>플레이 영상 · 시스템 · 조작법 ▶</span></button>
       <a class="go" href="https://yeonny3209.github.io/blade-raid/" target="_blank" rel="noopener">PLAY ▶</a>
     </article>
 
@@ -232,19 +179,8 @@ body.hof-lock{overflow:hidden}
       <span class="tag">LOL 형식</span>
       <h3>LOL 프로토타입</h3>
       <p class="lead2">롤 스타일의 2D 탑뷰 MOBA 프로토타입입니다.</p>
-      <details class="more">
-        <summary>상세 설명 보기 <small>(7줄)</small></summary>
-        <ul>
-        <li>3라인 맵에 미니언, 포탑, 정글이 있고, 상대 넥서스를 부수면 이깁니다.</li>
-        <li>지금은 챔피언 오리아나를 플레이할 수 있고, 챔피언과 시스템을 하나씩 늘려 가는 중입니다.</li>
-        <li>시작 화면에서 챔피언, 포지션, 소환사 주문 2개, 룬 페이지를 순서대로 고릅니다.</li>
-        <li>추천 룬과 추천 주문 버튼으로 챔피언별 추천 구성을 한 번에 불러옵니다.</li>
-        <li>조작 방식은 클래식과 WASD 중에서 고르고, 일시정지 화면에서도 바꿀 수 있습니다.</li>
-        <li>1대1 온라인에서는 방 코드 5자리로 친구와 대결하고, 서버 없이 P2P로 연결합니다.</li>
-        <li>상점에서 아이템을 사고 봉인 풀린 주문서를 쓰며, 아이콘은 라이엇 데이터 서버에서 불러옵니다.</li>
-      </ul>
-      </details>
       <span class="meta">아이콘을 불러오려면 인터넷이 필요하고, 없으면 글자로 표시됩니다.</span>
+      <button type="button" class="more-btn" data-game="lol">상세 설명 보기 <span>플레이 영상 · 시스템 · 조작법 ▶</span></button>
       <a class="go" href="https://yeonny3209.github.io/lol-prototype/" target="_blank" rel="noopener">PLAY ▶</a>
     </article>
 
@@ -252,18 +188,7 @@ body.hof-lock{overflow:hidden}
       <span class="tag">경영 시뮬레이션</span>
       <h3>작은 섬 농장 가게</h3>
       <p class="lead2">물려받은 빚 5,000G를 48일 안에 갚는 농장·가게 경영 시뮬레이션입니다.</p>
-      <details class="more">
-        <summary>상세 설명 보기 <small>(7줄)</small></summary>
-        <ul>
-        <li>버려진 밭과 가게를 물려받아 작물을 키우고, 내 가게에서 팔아 빚을 갚습니다.</li>
-        <li>하루는 아침 확인, 밭 작업, 가게 준비, 영업, 밤 정산 순서로 흘러갑니다.</li>
-        <li>계절은 봄, 여름, 가을, 겨울이 각각 12일이고, 작물은 계절마다 10종씩 40종입니다.</li>
-        <li>진열대에 작물을 놓고 가격 슬라이더로 값을 정합니다. 비싸면 손님이 줄고, 같은 물건을 계속 팔면 질립니다.</li>
-        <li>날씨, 오늘의 인기 작물, 스프링클러, 잼과 피클 같은 가공품이 있습니다.</li>
-        <li>저장 슬롯이 3개이고 하루가 끝날 때마다 자동 저장되며, 저장 코드로 다른 기기로 옮길 수 있습니다.</li>
-        <li>휴대폰과 태블릿용 안드로이드 앱(APK)이 있고, 아이폰은 홈 화면에 추가해 쓸 수 있습니다.</li>
-      </ul>
-      </details>
+      <button type="button" class="more-btn" data-game="farm">상세 설명 보기 <span>플레이 영상 · 시스템 · 조작법 ▶</span></button>
       <a class="go" href="https://yeonny3209.github.io/island-farm-shop/" target="_blank" rel="noopener">PLAY ▶</a>
     </article>
 
@@ -271,18 +196,7 @@ body.hof-lock{overflow:hidden}
       <span class="tag">편집 프로그램</span>
       <h3>MiniCut</h3>
       <p class="lead2">설치 없이 브라우저에서 쓰는 영상 편집기입니다. HTML 파일 하나가 전부입니다.</p>
-      <details class="more">
-        <summary>상세 설명 보기 <small>(7줄)</small></summary>
-        <ul>
-        <li>여러 영상을 이어 붙이고, 자르고, 순서를 바꾸고, 속도를 0.25배에서 4배까지 바꿉니다.</li>
-        <li>클립 사이에 디졸브, 암전, 밀기, 와이프, 원형, 줌 같은 전환 효과를 넣습니다.</li>
-        <li>화면 비율은 16:9, 9:16, 1:1, 4:5, 4:3이라 가로 영상을 세로 쇼츠로 쉽게 바꿉니다.</li>
-        <li>자막은 미리보기 화면에서 끌어서 위치를 잡고, 스타일 10종과 등장 애니메이션 7종을 씁니다.</li>
-        <li>필터 12종, 효과 14종, 배경음악, 스티커, 색보정을 지원합니다.</li>
-        <li>영상은 네트워크로 전송되지 않아서 인터넷을 끊어도 똑같이 동작합니다.</li>
-        <li>720p 또는 1080p WebM 파일로 내보내고, 프로젝트 저장과 실행 취소 60단계를 지원합니다.</li>
-      </ul>
-      </details>
+      <button type="button" class="more-btn" data-game="minicut">상세 설명 보기 <span>플레이 영상 · 시스템 · 조작법 ▶</span></button>
       <a class="go" href="https://yeonny3209.github.io/minicut/" target="_blank" rel="noopener">OPEN ▶</a>
     </article>
 
@@ -290,18 +204,8 @@ body.hof-lock{overflow:hidden}
       <span class="tag">대전 · 최대 5명</span>
       <h3>대전 테트리스</h3>
       <p class="lead2">방 코드로 친구를 불러 함께 하는 대전 테트리스입니다.</p>
-      <details class="more">
-        <summary>상세 설명 보기 <small>(6줄)</small></summary>
-        <ul>
-        <li>방 만들기로 방 코드를 받아 친구에게 알려 주고, 친구는 방 참가에서 코드를 입력합니다.</li>
-        <li>2명이 모이면 시작할 수 있고, 최대 5명까지 한 방에서 겨룹니다.</li>
-        <li>닉네임은 입력하지 않아도 되고, 준비 완료를 누르면 대결이 시작됩니다.</li>
-        <li>혼자 연습하는 모드에서 쉬움, 보통, 어려움, 익스트림 난이도를 고를 수 있습니다.</li>
-        <li>← → 로 이동, ↓ 로 소프트드롭, ↑ 또는 X로 시계 회전, Z로 반시계 회전하고, 하드드롭, Shift 홀드, P 일시정지를 지원합니다.</li>
-        <li>게임이 끝나면 점수가 나오고 재대결을 신청할 수 있으며, 소리는 켜고 끌 수 있습니다.</li>
-      </ul>
-      </details>
       <span class="meta">무료 서버라 한동안 쓰지 않으면 처음 접속할 때 깨어나는 데 시간이 걸릴 수 있습니다.</span>
+      <button type="button" class="more-btn" data-game="tetris">상세 설명 보기 <span>플레이 영상 · 시스템 · 조작법 ▶</span></button>
       <a class="go" href="https://tgame-9sve.onrender.com/" target="_blank" rel="noopener">PLAY ▶</a>
     </article>
   </div>
@@ -628,5 +532,7 @@ body.hof-lock{overflow:hidden}
 })();
 
 </script>
+<script src="games-data.js"></script>
+<script src="games.js"></script>
 </body>
 </html>
