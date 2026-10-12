@@ -99,3 +99,21 @@ body.gd-lock{overflow:hidden}
 @keyframes blkIn{from{transform:translateY(-100%)}to{transform:none}}
 
 @media (prefers-reduced-motion:reduce){.gd.open .gd-win{animation:none!important}.gd{transition:none}}
+
+/* 진행 중인 이벤트 */
+.ev{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:22px;align-items:center;padding:18px;border:1.5px solid color-mix(in srgb,#ffd25a 60%,#000);background:linear-gradient(160deg,#1a1430,var(--panel));box-shadow:0 0 40px rgba(255,210,90,.12)}
+.ev-poster{display:block;border:1px solid var(--line);overflow:hidden;line-height:0}
+.ev-poster img{width:100%;height:auto;display:block;transition:transform .35s}
+.ev-poster:hover img,.ev-poster:focus-visible img{transform:scale(1.03)}
+.ev-tag{display:inline-block;font:700 11px 'Orbitron','Noto Sans KR',sans-serif;letter-spacing:.14em;color:#2a1c00;background:#ffd25a;padding:4px 12px;clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%)}
+.ev-body h3{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-weight:400;font-size:clamp(30px,5vw,46px);margin:10px 0 0;color:#ffd25a;text-shadow:0 0 18px rgba(255,159,26,.5);line-height:1.2}
+.ev-sub{font-weight:700;color:#fff;font-size:17px;margin:2px 0 10px}
+.ev-body p{font-size:15px;line-height:1.8;color:#dfe2f7}
+.ev-body ul{list-style:none;margin:12px 0 0;display:grid;gap:4px}
+.ev-body li{font-size:14px;color:#c9cdea;padding-left:14px;position:relative}
+.ev-body li::before{content:"";position:absolute;left:0;top:.8em;width:6px;height:2px;background:#ffd25a}
+.ev-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.ev-go{display:inline-block;font:700 14px 'Noto Sans KR',sans-serif;color:#2a1c00;background:linear-gradient(120deg,#ffb52e,#ffe14d);padding:11px 22px;border-radius:6px}
+.ev-go.alt{background:transparent;color:#ffe9a0;border:1.5px solid rgba(255,225,77,.6)}
+.ev-go:hover,.ev-go:focus-visible{filter:brightness(1.15);outline:none}
+@media(max-width:700px){.ev{grid-template-columns:1fr}.ev-poster{max-width:340px;margin:0 auto}}
