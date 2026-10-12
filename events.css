@@ -1,0 +1,41 @@
+/* 이벤트 안내 창: 끌어서 옮기고, ✕ 로 닫을 수 있는 떠 있는 창 */
+.ev-open{margin-top:12px;background:linear-gradient(120deg,#ffb52e,#ffe14d 50%,#ff9bf3);box-shadow:0 0 28px rgba(255,210,90,.4)}
+.evw{position:fixed;z-index:55;left:50%;top:50%;width:min(820px,calc(100vw - 20px));max-height:calc(100vh - 20px);display:flex;flex-direction:column;background:linear-gradient(160deg,#1c1536,#0c0920);border:1.5px solid #ffd25a;box-shadow:0 0 0 1px #000,0 18px 60px rgba(0,0,0,.65),0 0 50px rgba(255,210,90,.2);color:#e8ecff;font-family:'Noto Sans KR','Malgun Gothic',sans-serif;opacity:0;transform:scale(.96);transition:opacity .25s,transform .25s}
+.evw.show{opacity:1;transform:none}
+.evw[hidden]{display:none}
+.evw-bar{display:flex;align-items:center;gap:10px;padding:10px 12px 10px 16px;background:linear-gradient(90deg,#3a2a06,#241a4a);border-bottom:1px solid rgba(255,210,90,.5);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.evw.drag .evw-bar{cursor:grabbing}
+.evw-ttl{flex:1;font:700 15px 'Noto Sans KR',sans-serif;color:#ffe9a0;letter-spacing:.04em}
+.evw-ttl small{font:700 11px 'Orbitron',sans-serif;letter-spacing:.14em;color:#ffb52e;margin-left:8px}
+.evw-x{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,225,77,.7);background:rgba(10,6,0,.6);color:#ffe14d;font-size:17px;cursor:pointer;display:grid;place-items:center;padding:0}
+.evw-x:hover,.evw-x:focus-visible{background:#ffe14d;color:#120c02;outline:none}
+.evw-tabs{display:flex;gap:6px;padding:10px 12px 0}
+.evw-tab{flex:1;padding:10px 8px;border:1px solid #3a3470;border-bottom:0;background:#120e2a;color:#9aa3d0;font:700 14px 'Noto Sans KR',sans-serif;cursor:pointer;border-radius:8px 8px 0 0}
+.evw-tab[aria-selected=true]{background:#241a4a;color:#fff;border-color:#ffd25a}
+.evw-tab:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+.evw-body{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:20px;padding:16px;overflow-y:auto;border-top:1px solid #ffd25a;margin-top:-1px;background:#241a4a22}
+.evw-poster{display:block;border:1px solid #3a3470;line-height:0;align-self:start}
+.evw-poster img{width:100%;height:auto;display:block}
+.evw-tag{display:inline-block;font:700 11px 'Orbitron','Noto Sans KR',sans-serif;letter-spacing:.14em;color:#2a1c00;background:#ffd25a;padding:4px 12px;clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%)}
+.evw-txt h3{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-weight:400;font-size:clamp(28px,5vw,40px);margin:10px 0 0;color:#ffd25a;text-shadow:0 0 18px rgba(255,159,26,.5);line-height:1.2}
+.evw-sub{font-weight:700;color:#fff;font-size:17px;margin:2px 0 10px}
+.evw-txt p{font-size:16px;line-height:1.8;color:#e1e4fa}
+.evw-txt ul{list-style:none;margin:12px 0 0;display:grid;gap:5px}
+.evw-txt li{font-size:15px;color:#cfd3ee;padding-left:14px;position:relative;line-height:1.6}
+.evw-txt li::before{content:"";position:absolute;left:0;top:.85em;width:6px;height:2px;background:#ffd25a}
+.evw-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.evw-go{display:inline-block;font:700 15px 'Noto Sans KR',sans-serif;color:#2a1c00;background:linear-gradient(120deg,#ffb52e,#ffe14d);padding:11px 22px;border-radius:6px;text-decoration:none}
+.evw-go.alt{background:transparent;color:#ffe9a0;border:1.5px solid rgba(255,225,77,.6)}
+.evw-go:hover,.evw-go:focus-visible{filter:brightness(1.15);outline:none}
+.evw-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid rgba(255,210,90,.3);background:#0a0716;font-size:13px;color:#9aa3c8}
+.evw-foot button{font:700 13px 'Noto Sans KR',sans-serif;color:#cfd6ff;background:transparent;border:1px solid #3a3470;border-radius:6px;padding:8px 14px;cursor:pointer}
+.evw-foot button:hover,.evw-foot button:focus-visible{border-color:#fff;color:#fff;outline:none}
+@media(max-width:700px){
+  .evw{width:calc(100vw - 16px)}
+  .evw-body{grid-template-columns:1fr;gap:14px}
+  .evw-poster{max-width:220px;margin:0 auto}
+  .evw-txt p{font-size:15px}
+  .evw-foot{justify-content:flex-end}
+  .evw-foot>span:first-child{display:none}
+}
+@media(prefers-reduced-motion:reduce){.evw{transition:none}}
