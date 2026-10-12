@@ -13,12 +13,12 @@
       paras: ['7월 말, 평평하던 화면에 깊이가 생겼습니다. React Three Fiber로 만든 「My 3D Game Universe」에는 액션 RPG, 알을 훔쳐 하늘로 날아오르는 드래곤 라이더, 점프맵 시련의 탑, 방탈출까지 네 개의 게임이 한 포털 안에 들어 있습니다.',
         '카메라가 돌아가고 하늘이 열리는 것만으로도 설레던 시기였습니다. 여럿이 같은 공간에서 만나는 멀티플레이까지 욕심을 냈고, 설치 없이 주소 하나로 어디서든 열리게 했습니다. 세계가 한 겹 넓어진 순간이었습니다.'],
       chips: ['첫 번째 3D', 'React Three Fiber', '게임 4종', '멀티플레이'], link: 'https://chimerical-licorice-8b602c.netlify.app/' },
-    { no: 3, icon: '🐉', title: '내가 키운 드래곤', en: 'DRAGON NURSERY RPG', tag: '2026.08 · 알에서 깨어난 이야기', color: '#c77dff', sky: ['#14081f', '#3a1650'],
-      video: 'media/dragon.mp4', cap: '드래곤 RPG · 직접 플레이',
-      quote: '알에서 깨어난 건 드래곤이었고, 나는 계속 만들었다.',
-      paras: ['8월 3일부터 시작된 드래곤 이야기입니다. 먹이를 주고, 교배해서 새 드래곤을 얻고, 세 마리를 골라 3대3으로 싸웁니다. 알을 노리는 밀렵꾼이 나타나면 함정을 놓아 지켜야 했습니다.',
-        '속성마다 다른 필살기와 각성, 전설 등급, AI 투기장과 친선전까지. 도감이 한 칸씩 채워지는 걸 보면서, 게임은 「내가 만든 것」에서 「내가 아끼는 것」으로 바뀌어 갔습니다.'],
-      chips: ['드래곤 3대3', '교배 · 각성 · 전설', '도감', '온라인 친선전'], link: 'https://yeonny3209.github.io/qkrtpdbs1/' },
+    { no: 3, icon: '🐉', title: '용의 섬에서 만난 드래곤', en: 'DRAGON MASTER: LEGEND', tag: '2026.08 · 소환하고 키우고 싸우는 RPG', color: '#c77dff', sky: ['#14081f', '#3a1650'],
+      video: 'media/dragon2.mp4', cap: '드래곤 마스터: 레전드 · 직접 플레이',
+      quote: '이름을 정하고, 첫 드래곤을 고르고, 낯선 섬에서 눈을 떴다.',
+      paras: ['8월 3일부터 만든 「드래곤 마스터: 레전드」입니다. 폭풍에 휩쓸려 이름 없는 섬에 닿은 당신이 첫 드래곤을 고르며 모험을 시작합니다. 화염, 빙결, 대지, 뇌전, 신비, 풍, 암흑, 빛. 여덟 속성 중 하나를 고르는 일이 첫 번째 선택입니다.',
+        '소환진 위로 3D 드래곤이 날아오르는 연출, 속성 상성이 갈리는 턴제 전투, 갈림길 대사가 있는 10장 300스테이지 이야기, 그리고 500층 무한의 탑까지. 도감 100칸을 한 마리씩 채워 가는 게임입니다.'],
+      chips: ['드래곤 100종', '속성 8가지', '캠페인 300스테이지', '무한의 탑 500층'], link: 'https://yeonny3209.github.io/qkrtpdbs1/' },
     { no: 4, icon: '🛡️', title: '코어를 지키는 일', en: 'NEON CORE DEFENSE', tag: '2026.09 · 설계도 위의 전선', color: '#5aa8ff', sky: ['#050c1c', '#0b2a55'],
       video: 'media/neondefense.mp4', cap: '네온 코어 디펜스 · 직접 플레이',
       quote: '한 칸에 한 개의 탑. 그것이 전부였다.',
@@ -395,11 +395,11 @@
     ctx.beginPath(); ctx.moveTo(sx - hw - 34 * k, groundY - hgt - 6 * k); ctx.quadraticCurveTo(sx, groundY - hgt - 34 * k, sx + hw + 34 * k, groundY - hgt - 6 * k); ctx.lineTo(sx + hw + 26 * k, groundY - hgt + 12 * k); ctx.lineTo(sx - hw - 26 * k, groundY - hgt + 12 * k); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.rect(sx - hw, groundY - hgt + 44 * k, hw * 2, 9 * k); ctx.fill(); ctx.stroke(); ctx.shadowBlur = 0;
     // 간판
-    var sw = 224 * k, sh = 58 * k, sy = groundY - hgt + 62 * k;
+    var sw = 262 * k, sh = 66 * k, sy = groundY - hgt + 60 * k;
     ctx.strokeStyle = rgba(col, 0.8); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(sx - sw * 0.35, groundY - hgt + 53 * k); ctx.lineTo(sx - sw * 0.35, sy); ctx.moveTo(sx + sw * 0.35, groundY - hgt + 53 * k); ctx.lineTo(sx + sw * 0.35, sy); ctx.stroke();
     ctx.fillStyle = 'rgba(8,6,24,.92)'; ctx.strokeStyle = col; ctx.lineWidth = 2; rr(sx - sw / 2, sy, sw, sh, 10 * k); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = col; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '700 ' + Math.round(11 * k) + 'px Orbitron,sans-serif'; ctx.fillText('No.0' + g.no, sx, sy + 14 * k);
-    ctx.fillStyle = '#fff'; ctx.font = '400 ' + Math.round(19 * k) + 'px "Black Han Sans","Noto Sans KR",sans-serif'; fitText(g.title, sx, sy + 38 * k, sw - 20 * k);
+    ctx.fillStyle = col; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '700 ' + Math.round(13 * k) + 'px Orbitron,sans-serif'; ctx.fillText('No.0' + g.no, sx, sy + 15 * k);
+    ctx.fillStyle = '#fff'; ctx.font = '400 ' + Math.round(24 * k) + 'px "Black Han Sans","Noto Sans KR",sans-serif'; fitText(g.title, sx, sy + 44 * k, sw - 20 * k);
     // 아이콘
     glow(sx, groundY - hgt - 44 * k + bob, 54 * k, col, 0.5); ctx.font = Math.round(46 * k) + 'px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif'; ctx.fillStyle = '#fff'; ctx.fillText(g.icon, sx, groundY - hgt - 44 * k + bob);
   }
