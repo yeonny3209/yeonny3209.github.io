@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>오버클럭 설명서 · OVERCLOCK GUIDE</title>
+<meta name="description" content="오버클럭의 모드, 조작법, 모바일 사용법, 속성과 반응, 요원 14명, 시즌별 구역과 보스를 한 페이지에 정리한 설명서.">
+<meta name="theme-color" content="#07060d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07060d;--panel:#100d24;--panel2:#161032;--line:#2e2a55;--tx:#e8ecff;--mu:#9aa3d0;--cy:#29f0ff;--mg:#ff3df0;--ye:#ffe14d;--gr:#6dff8a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:radial-gradient(900px 420px at 50% -80px,rgba(255,61,240,.2),transparent 70%),radial-gradient(700px 400px at 0% 30%,rgba(41,240,255,.08),transparent 70%),var(--bg);color:var(--tx);font-family:'Noto Sans KR','Malgun Gothic',sans-serif;line-height:1.8;padding-bottom:70px}
+a{color:var(--cy)}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+/* 상단 */
+.top{position:sticky;top:0;z-index:20;background:rgba(7,6,13,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;overflow-x:auto;white-space:nowrap;padding-top:10px;padding-bottom:10px;scrollbar-width:thin}
+.top b{font:900 13px Orbitron,sans-serif;letter-spacing:.14em;color:var(--mg)}
+.top a{color:var(--mu);text-decoration:none;font-size:14px;padding:4px 10px;border-radius:999px;border:1px solid transparent}
+.top a:hover,.top a:focus-visible{color:#fff;border-color:var(--cy);outline:none}
+header.hero{text-align:center;padding:54px 0 26px}
+.logo{font-family:'Black Han Sans',sans-serif;font-size:clamp(46px,11vw,110px);line-height:1.05;color:#fff;letter-spacing:3px;text-shadow:0 0 12px var(--cy),0 0 40px var(--mg)}
+.en{font:900 clamp(11px,2.2vw,16px) Orbitron,sans-serif;letter-spacing:.6em;text-indent:.6em;color:var(--mg);margin-top:8px}
+.lead{max-width:680px;margin:22px auto 0;color:#cfd6ff;font-size:clamp(15px,2.4vw,18px)}
+.cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:16px;padding:12px 26px;border-radius:8px;color:#2a1c00;background:linear-gradient(120deg,#ffb52e,#ffe14d)}
+.btn.alt{background:transparent;color:var(--cy);border:1.5px solid var(--cy)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:30px 0 0}
+.fact{background:var(--panel);border:1px solid var(--line);padding:14px 8px;text-align:center}
+.fact b{display:block;font:900 clamp(20px,4vw,28px) Orbitron,'Noto Sans KR',sans-serif;color:var(--ye)}
+.fact span{font-size:13px;color:var(--mu)}
+/* 섹션 */
+section{margin-top:54px}
+h2{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-weight:400;font-size:clamp(26px,5vw,38px);display:flex;align-items:center;gap:12px;margin-bottom:6px}
+h2::before{content:"";width:8px;height:32px;background:linear-gradient(var(--cy),var(--mg));border-radius:4px;box-shadow:0 0 14px var(--mg)}
+h2 small{font:700 12px Orbitron,sans-serif;letter-spacing:.2em;color:var(--mu)}
+.sub{color:var(--mu);margin-bottom:16px}
+h3{font-size:19px;margin:22px 0 8px;color:var(--cy)}
+p{margin-top:8px}
+.card{background:var(--panel);border:1px solid var(--line);padding:16px 18px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.card h4{font-size:17px;color:#fff;margin-bottom:4px}
+.card p{font-size:14.5px;color:#d5d9f3;margin-top:4px}
+ul.list{list-style:none;display:grid;gap:6px;margin-top:10px}
+ul.list li{position:relative;padding-left:16px;font-size:15px;color:#dfe2f7}
+ul.list li::before{content:"";position:absolute;left:0;top:.8em;width:7px;height:2px;background:var(--mg)}
+.note{margin-top:14px;padding:12px 16px;border:1px dashed var(--mg);background:rgba(255,61,240,.06);font-size:14.5px}
+.tip{margin-top:14px;padding:12px 16px;border-left:4px solid var(--gr);background:rgba(109,255,138,.07);font-size:14.5px}
+kbd{display:inline-block;min-width:26px;text-align:center;padding:1px 8px;border:1px solid #4a4580;border-bottom-width:3px;border-radius:6px;background:#1b1540;font:700 13px Consolas,monospace;color:#fff}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14.5px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--mu);font-weight:700;font-size:13px;background:#0d0a20}
+td:first-child{white-space:nowrap}
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+.tag{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12.5px;font-weight:700;border:1px solid currentColor}
+/* 탭 */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.tabs button{font:700 15px inherit;font-family:inherit;padding:10px 18px;border:1px solid var(--line);background:#100b24;color:var(--mu);cursor:pointer;border-radius:8px 8px 0 0}
+.tabs button[aria-selected=true]{background:var(--panel2);color:#fff;border-color:var(--cy)}
+.tabs button:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+.tabpane{border:1px solid var(--cy);background:var(--panel2);padding:16px 18px;margin-top:-1px}
+.tabpane[hidden]{display:none}
+/* 모바일 조작 그림 */
+.phone{position:relative;width:100%;max-width:640px;aspect-ratio:16/8;margin:14px auto 4px;border:3px solid #4a4580;border-radius:24px;background:radial-gradient(circle at 50% 40%,#18124a,#08061a);overflow:hidden}
+.phone i{position:absolute;display:grid;place-items:center;border:2px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(41,240,255,.1);color:#fff;font:700 12px/1.1 'Noto Sans KR',sans-serif;font-style:normal;text-align:center}
+.phone i small{display:block;font-size:10px;color:#9aa3d0;font-weight:400}
+.phone .stick{border-color:var(--cy);background:rgba(41,240,255,.12)}
+.phone .fire{border-color:var(--mg);background:rgba(255,61,240,.15)}
+.phone .od{border-color:var(--ye);background:rgba(255,225,77,.12)}
+.phone .hud{position:absolute;left:3%;top:5%;width:34%;height:14%;border:1px solid #4a4580;border-radius:6px;background:rgba(255,255,255,.06);font-size:11px;color:#9aa3d0;padding:2px 8px}
+.phone .pz{position:absolute;left:40%;top:5%;width:8%;height:14%;border:1.5px solid #fff;border-radius:6px;display:grid;place-items:center;font-weight:700;font-size:13px}
+.legend{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));margin-top:12px}
+.legend div{display:flex;gap:10px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);padding:10px 12px;font-size:14.5px}
+.legend b{flex:none;min-width:54px;text-align:center;border:1.5px solid var(--cy);border-radius:999px;padding:0 8px;color:#fff;font-size:13px}
+.steps{counter-reset:s;display:grid;gap:10px;margin-top:12px}
+.steps>div{counter-increment:s;display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);padding:12px 14px}
+.steps>div::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe9a8,var(--ye));color:#2a1808;font:900 16px Orbitron,sans-serif;display:grid;place-items:center}
+.steps b{color:#fff}
+details{background:var(--panel);border:1px solid var(--line);margin-top:10px}
+summary{cursor:pointer;padding:12px 16px;font-weight:700;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ ";color:var(--mg)}
+details[open] summary::before{content:"▾ "}
+details>div{padding:0 16px 14px}
+footer{margin-top:60px;text-align:center;color:var(--mu);font-size:14px}
+@media(max-width:620px){.top b{display:none}.phone i{font-size:10px}.phone i small{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="목차"><div class="wrap"><b>OVERCLOCK GUIDE</b><a href="#intro">소개</a><a href="#start">시작하기</a><a href="#controls">조작법</a><a href="#mobile">모바일 사용법</a><a href="#play">진행 방식</a><a href="#elements">속성 · 반응</a><a href="#agents">요원 14명</a><a href="#seasons">시즌과 보스</a><a href="#hard">난이도</a><a href="#faq">자주 묻는 것</a></div></nav>
+
+<div class="wrap">
+<header class="hero">
+  <h1 class="logo">오버클럭</h1>
+  <div class="en">O V E R C L O C K</div>
+  <p class="lead">도시 관리 AI 「마더보드」가 폭주했습니다. 요원이 되어 구역을 돌파하고, 강화를 쌓아 나만의 빌드를 만들고, 선택으로 결말을 바꾸는 탑다운 로그라이트 슈팅입니다.</p>
+  <div class="cta"><a class="btn" href="https://yeonny3209.github.io/overclock/" target="_blank" rel="noopener">지금 플레이 ▶</a><a class="btn alt" href="#mobile">모바일 사용법 보기</a></div>
+  <div class="facts">
+    <div class="fact"><b>14</b><span>요원</span></div><div class="fact"><b>12</b><span>보스</span></div><div class="fact"><b>3</b><span>시즌</span></div><div class="fact"><b>14</b><span>속성</span></div><div class="fact"><b>7</b><span>엔딩</span></div>
+  </div>
+</header>
+
+<section id="intro">
+  <h2>소개 <small>INTRO</small></h2>
+  <p class="sub">설치 없이 브라우저에서 열리는 게임이고, 안드로이드 앱(APK)도 있습니다.</p>
+  <div class="grid">
+    <div class="card"><h4>한 판의 흐름</h4><p>구역마다 갈림길 지도를 골라 내려가며 전투, 상점, 정비소, 이벤트, 휴식을 거치고, 끝에서 보스와 맞섭니다. 전투에서 이길 때마다 강화를 하나씩 고릅니다.</p></div>
+    <div class="card"><h4>빌드가 곧 재미</h4><p>같은 속성의 강화를 모으면 세트 효과가 켜지고, 9개를 채우면 「프리즘 각성」으로 판이 뒤집힙니다. 속성끼리 만나면 반응이 터집니다.</p></div>
+    <div class="card"><h4>이야기와 선택</h4><p>구역마다 컷씬이 있고, 시즌 2와 시즌 3는 세력 평판에 따라 결말이 갈립니다. 시즌 3는 시즌 2의 결말을 이어받습니다.</p></div>
+    <div class="card"><h4>모드 5가지</h4><p>캠페인(시즌 1), 시즌 2 · 언더그라운드, 시즌 3 · 신호의 끝, 무한 아레나, 일일 도전. 시즌 2는 시즌 1 클리어 후, 시즌 3는 시즌 2 클리어 후에 열립니다.</p></div>
+  </div>
+</section>
+
+<section id="start">
+  <h2>처음 시작하기 <small>QUICK START</small></h2>
+  <div class="steps">
+    <div><span><b>타이틀에서 「캠페인」을 고르세요.</b> 처음에는 시즌 1만 열려 있고, 클리어하면 시즌 2가, 시즌 2를 클리어하면 시즌 3가 열립니다.</span></div>
+    <div><span><b>요원을 고르세요.</b> 처음엔 레인(돌격)이 무난합니다. 요원마다 스킬과 시작 무기가 다르고, 일부 요원은 조건을 달성하거나 해금 화면에서 코어 칩으로 열 수 있습니다.</span></div>
+    <div><span><b>지도에서 갈 곳을 고르세요.</b> 위에서 아래로 내려가며 노드를 누릅니다. 전투 노드에서 이기면 강화 3개 중 1개를 고릅니다.</span></div>
+    <div><span><b>구역 끝의 보스를 쓰러뜨리세요.</b> 쓰러뜨리면 이야기 컷씬이 나오고 다음 구역으로 넘어갑니다. 쓰러져도 코어 칩이 쌓여서 다음 판에 해금과 강화로 쓸 수 있습니다.</span></div>
+  </div>
+  <div class="tip">진행 중인 판은 자동 저장됩니다. 타이틀에 「이어하기」가 나오면 이어서 할 수 있습니다.</div>
+</section>
+
+<section id="controls">
+  <h2>조작법 <small>CONTROLS</small></h2>
+  <p class="sub">기기에 맞는 탭을 고르세요.</p>
+  <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="pc">키보드 · 마우스</button><button role="tab" aria-selected="false" data-t="pad">게임패드</button><button role="tab" aria-selected="false" data-t="touch">터치(휴대폰)</button></div>
+  <div class="tabpane" id="t-pc"><div class="tbl" style="border:0"><table>
+    <tr><th>동작</th><th>키</th></tr>
+    <tr><td>이동</td><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></td></tr>
+    <tr><td>조준</td><td>마우스 움직임</td></tr>
+    <tr><td>사격</td><td>마우스 왼쪽 버튼</td></tr>
+    <tr><td>요원 스킬</td><td>마우스 오른쪽 버튼</td></tr>
+    <tr><td>구르기 (무적)</td><td><kbd>Space</kbd></td></tr>
+    <tr><td>재장전</td><td><kbd>R</kbd></td></tr>
+    <tr><td>무기 교체</td><td><kbd>Q</kbd> 또는 마우스 휠</td></tr>
+    <tr><td>상호작용 · 해킹</td><td><kbd>E</kbd></td></tr>
+    <tr><td>오버클럭 모드</td><td><kbd>F</kbd></td></tr>
+    <tr><td>일시정지</td><td><kbd>Esc</kbd></td></tr>
+  </table></div></div>
+  <div class="tabpane" id="t-pad" hidden><div class="tbl" style="border:0"><table>
+    <tr><th>동작</th><th>버튼</th></tr>
+    <tr><td>이동</td><td>왼쪽 스틱</td></tr><tr><td>조준</td><td>오른쪽 스틱</td></tr><tr><td>사격</td><td>RT</td></tr><tr><td>요원 스킬</td><td>LT</td></tr>
+    <tr><td>구르기</td><td>A</td></tr><tr><td>재장전</td><td>X</td></tr><tr><td>무기 교체</td><td>Y</td></tr><tr><td>상호작용 · 해킹</td><td>B</td></tr><tr><td>오버클럭 모드</td><td>LB</td></tr>
+  </table></div></div>
+  <div class="tabpane" id="t-touch" hidden>
+    <p style="margin-top:0">왼쪽 아래 스틱으로 이동하고, 오른쪽 스틱 또는 <b>발사</b> 버튼으로 쏩니다. 자세한 설명은 아래 <a href="#mobile">모바일 사용법</a>에 있습니다.</p>
+  </div>
+</section>
+
+<section id="mobile">
+  <h2>모바일 사용법 <small>ON YOUR PHONE</small></h2>
+  <p class="sub">휴대폰과 태블릿에서도 그대로 즐길 수 있습니다. 가로 화면을 권장합니다.</p>
+
+  <h3>1. 설치하거나 홈 화면에 추가하기</h3>
+  <div class="steps">
+    <div><span><b>안드로이드 앱(APK)</b> — 게임 타이틀 화면 아래의 「안드로이드 앱(APK) 받기」를 눌러 내려받고 설치합니다. 공식 스토어 앱이 아니라서 설치할 때 「출처를 알 수 없는 앱」 허용을 요구할 수 있습니다.</span></div>
+    <div><span><b>브라우저로 바로 열기</b> — 휴대폰 브라우저에서 <a href="https://yeonny3209.github.io/overclock/" target="_blank" rel="noopener">yeonny3209.github.io/overclock</a>를 엽니다. 설치 없이 바로 됩니다.</span></div>
+    <div><span><b>홈 화면에 추가 (iPhone · iPad)</b> — Safari의 공유 버튼(□↑)을 누르고 「홈 화면에 추가」를 고르면 앱처럼 열립니다.</span></div>
+  </div>
+
+  <h3>2. 화면 구성</h3>
+  <div class="phone" role="img" aria-label="휴대폰 가로 화면의 터치 조작 배치 그림">
+    <div class="hud">체력 · 오버클럭 게이지</div>
+    <div class="pz">Ⅱ</div>
+    <i class="stick" style="left:6%;top:48%;width:24%;aspect-ratio:1;">이동<small>왼쪽 스틱</small></i>
+    <i style="right:6%;bottom:8%;width:15%;aspect-ratio:1;border-color:#fff;">스킬</i>
+    <i style="right:23%;bottom:6%;width:13.5%;aspect-ratio:1;">구르기</i>
+    <i class="fire" style="right:12%;bottom:42%;width:17%;aspect-ratio:1;">발사<small>누르고 있기</small></i>
+    <i class="od" style="right:33%;bottom:40%;width:10%;aspect-ratio:1;">OC</i>
+    <i style="right:40%;bottom:30%;width:9%;aspect-ratio:1;">교체</i>
+    <i style="right:46%;bottom:18%;width:8%;aspect-ratio:1;">R</i>
+    <i style="right:38%;bottom:6%;width:9%;aspect-ratio:1;">E</i>
+  </div>
+  <p class="hint" style="font-size:13px;color:var(--mu);text-align:center">그림은 배치를 설명하기 위한 모양이고, 실제 크기와 위치는 화면 크기에 따라 조금씩 달라집니다.</p>
+  <div class="legend">
+    <div><b>이동</b><span>왼쪽 화면(대략 왼쪽 절반)을 누르고 끌면 스틱이 생겨 그 방향으로 움직입니다.</span></div>
+    <div><b>조준·사격</b><span>오른쪽 화면을 누르고 끌면 조준 스틱입니다. 당기는 방향으로 조준하고 쏩니다. 스틱을 놓고 있으면 가장 가까운 적을 자동으로 조준해서 쏩니다.</span></div>
+    <div><b>발사</b><span>누르고 있으면 가장 가까운 적을 자동 조준해서 계속 쏩니다. 적이 없으면 부술 수 있는 물건을 조준합니다.</span></div>
+    <div><b>스킬</b><span>요원 고유 스킬을 씁니다. 사용 후 남은 시간이 버튼에 표시됩니다.</span></div>
+    <div><b>구르기</b><span>짧게 구르면서 잠깐 무적이 됩니다. 위험한 탄을 피할 때 쓰세요.</span></div>
+    <div><b>E</b><span>상점, 정비소 같은 상호작용과, 약해진 기계를 해킹할 때 누릅니다.</span></div>
+    <div><b>OC</b><span>오버클럭 게이지가 가득 차면 눌러 8초간 폭주합니다.</span></div>
+    <div><b>교체 · R</b><span>무기를 바꾸거나 재장전합니다.</span></div>
+    <div><b>Ⅱ</b><span>화면 위쪽에 있는 일시정지 버튼입니다. 설정을 바꾸거나 판을 포기할 수 있습니다.</span></div>
+  </div>
+
+  <h3>3. 모바일에서 더 편하게 쓰는 설정</h3>
+  <p>타이틀의 「설정」에서 바꿀 수 있고, 전투 중에는 Ⅱ 버튼으로 일시정지하면 설정이 나옵니다.</p>
+  <ul class="list">
+    <li><b>터치 자동 사격</b> — 켜 두면 조준 스틱을 놓고 있어도 가까운 적을 자동으로 쏩니다. 직접 겨냥하고 싶으면 끄세요.</li>
+    <li><b>파티클 양</b> — 기기가 버벅이면 「낮음」으로 내리세요. 화면 흔들림을 끄는 것도 도움이 됩니다.</li>
+    <li><b>코인 자동 회수</b> — 켜져 있으면 코인을 직접 줍지 않아도 모입니다.</li>
+    <li><b>음량 · 배경음악</b> — 효과음과 배경음악을 따로 조절합니다.</li>
+    <li><b>미니맵 · 피해 숫자</b> — 화면이 복잡하면 끄세요.</li>
+  </ul>
+  <div class="tip"><b>기기를 옮길 때</b> — 설정의 「저장 백업」에서 「저장 코드 보기」로 진행 상황을 코드로 만들 수 있습니다. 다른 휴대폰이나 컴퓨터, 앱에서 같은 화면의 「불러오기」에 붙여 넣으면 이어서 할 수 있습니다.</div>
+
+  <h3>4. 문제가 생기면</h3>
+  <ul class="list">
+    <li><b>소리가 안 나요</b> — 브라우저는 화면을 한 번 터치해야 소리를 켜 줍니다. 한 번 눌러 보세요. 그래도 안 나면 무음 모드와 설정의 음량을 확인하세요.</li>
+    <li><b>화면이 확대되거나 스크롤돼요</b> — 게임 화면에서는 손가락이 조작에 쓰이도록 만들어져 있습니다. 메뉴 화면에서 확대됐다면 두 번 눌러 원래 크기로 돌리세요.</li>
+    <li><b>세로 화면이 답답해요</b> — 휴대폰을 가로로 돌리면 훨씬 넓게 보입니다.</li>
+    <li><b>버튼이 손가락에 가려요</b> — 기기 가장자리에 손가락을 걸치지 말고, 엄지를 화면 안쪽 가까이 두면 덜 가려집니다.</li>
+    <li><b>진행 상황이 사라졌어요</b> — 브라우저의 사이트 데이터를 지우면 저장도 지워집니다. 미리 저장 코드를 만들어 두세요.</li>
+  </ul>
+</section>
+
+<section id="play">
+  <h2>진행 방식 <small>HOW IT PLAYS</small></h2>
+  <h3>지도의 노드</h3>
+  <div class="grid">
+    <div class="card"><h4>⚔ 전투</h4><p>목표를 달성하면 승리. 이기면 강화 3개 중 1개를 고릅니다.</p></div>
+    <div class="card"><h4>☠ 엘리트</h4><p>더 강한 적. 대신 보상이 좋습니다.</p></div>
+    <div class="card"><h4>$ 상점</h4><p>코인으로 강화, 무기, 회복을 삽니다.</p></div>
+    <div class="card"><h4>⚙ 정비소</h4><p>무기를 강화하거나 두 무기를 융합해 두 번째 속성을 새깁니다.</p></div>
+    <div class="card"><h4>? 이벤트</h4><p>선택지를 고르는 짧은 이야기. 시즌마다 다른 이벤트가 나옵니다.</p></div>
+    <div class="card"><h4>✚ 휴식</h4><p>체력을 회복하거나 강화를 다듬습니다.</p></div>
+  </div>
+  <p>시즌 2에는 갇힌 요원을 구하는 <b>구조</b> 노드가, 시즌 3에는 유목 상인과 물물교환을 하는 <b>상단</b> 노드가 추가됩니다.</p>
+
+  <h3>전투 목표</h3>
+  <p>전투마다 목표가 다릅니다. 모든 적 처치(섬멸), 60초 동안 버티기(생존), 발전기 지키기(거점 사수), 아군 드론을 출구까지 호위, 데이터칩 5개를 모아 탈출(수집) 등이 있습니다.</p>
+
+  <h3>세트 효과와 프리즘 각성</h3>
+  <ul class="list">
+    <li>같은 속성 태그의 강화를 <b>3개 · 5개 · 7개</b> 모으면 단계별 세트 효과가 켜집니다.</li>
+    <li>하나의 태그를 <b>9개</b> 모으면 <b>프리즘 각성</b>: 피해 ×3, 연사 +40%, 관통 +2, 태그마다 다른 각성 효과가 붙습니다.</li>
+  </ul>
+
+  <h3>오버클럭 모드 · 해킹 · 융합</h3>
+  <div class="grid">
+    <div class="card"><h4 style="color:var(--mg)">오버클럭 모드</h4><p>처치와 반응으로 게이지를 채우고 <kbd>F</kbd>(터치는 OC 버튼)를 누르면 8초간 폭주합니다. 연사 +60%, 피해 +50%, 적 탄 감속.</p></div>
+    <div class="card"><h4 style="color:var(--cy)">해킹</h4><p>체력 30% 이하의 기계(점선 원 표시) 옆에서 <kbd>E</kbd>. 15초간 아군으로 싸우다 자폭하고, 재사용 대기는 8초입니다.</p></div>
+    <div class="card"><h4 style="color:#ffb52e">무기 융합</h4><p>정비소에서 두 무기를 합쳐, 남는 무기에 재료의 속성을 두 번째 속성으로 새깁니다. 피해 +15%.</p></div>
+  </div>
+
+  <h3>무한 아레나 · 일일 도전</h3>
+  <ul class="list">
+    <li><b>무한 아레나</b> — 한 경기장에서 웨이브가 끝없이 이어집니다. 3웨이브마다 강화, 5웨이브마다 무기 상자, 10웨이브마다 보스가 나옵니다. 쓰러지기 전까지 최고 웨이브를 겨룹니다.</li>
+    <li><b>일일 도전</b> — 날마다 같은 조건으로 한 판. 점수를 겨룹니다.</li>
+    <li><b>기록 카드</b> — 결과 화면의 「기록 카드 저장」으로 기록을 이미지로 저장하고 공유할 수 있습니다. <a href="overclock-event.html">진행 중인 이벤트</a>에서 이 카드로 참가합니다.</li>
+  </ul>
+</section>
+
+<section id="elements">
+  <h2>속성과 반응 <small>ELEMENTS</small></h2>
+  <p class="sub">원소마다 걸리는 상태 이상이 다릅니다. 도감의 「속성」 탭에 더 자세히 있습니다.</p>
+  <div class="tbl"><table>
+    <tr><th>속성</th><th>상태</th><th>핵심 효과</th></tr>
+    <tr><td><span class="tag" style="color:#ff7a2a">불</span></td><td>화상</td><td>지속 피해. 시간이 지나며 체력을 태웁니다.</td></tr>
+    <tr><td><span class="tag" style="color:#ffe14d">전기</span></td><td>감전</td><td>연쇄. 맞은 적 주변으로 번개가 옮겨 붙습니다.</td></tr>
+    <tr><td><span class="tag" style="color:#8fe8ff">얼음</span></td><td>빙결</td><td>군중 제어. 둔화가 쌓이면 완전히 얼어붙습니다.</td></tr>
+    <tr><td><span class="tag" style="color:#a9b8cc">금속</span></td><td>파쇄</td><td>방어 붕괴. 중첩마다 받는 모든 피해가 늘어납니다. 보스에게도 통합니다.</td></tr>
+    <tr><td><span class="tag" style="color:#fff4b0">빛</span></td><td>실명</td><td>무력화. 실명된 적은 공격하지 못하고 헤맵니다.</td></tr>
+    <tr><td><span class="tag" style="color:#9b6bff">어둠</span></td><td>침식</td><td>처형. 중첩에 비례한 체력 이하가 되면 즉시 죽습니다.</td></tr>
+    <tr><td><span class="tag" style="color:#7dffb8">바람</span></td><td>돌풍</td><td>밀어내기. 벽에 부딪히면 충돌 피해를 받습니다.</td></tr>
+    <tr><td><span class="tag" style="color:#3d8bff">물</span></td><td>젖음</td><td>촉매. 젖은 적에게 거는 다른 상태 이상이 증폭됩니다.</td></tr>
+    <tr><td><span class="tag" style="color:#b6ff3d">독</span></td><td>중독</td><td>쇠약. 최대 체력 비례 피해, 중독된 적이 주는 피해가 줄어듭니다.</td></tr>
+    <tr><td><span class="tag" style="color:#d8c8ff">시간</span></td><td>메아리</td><td>지연 반복. 표식 동안 받은 피해의 일부가 잠시 뒤 한 번 더 들어갑니다.</td></tr>
+    <tr><td><span class="tag" style="color:#e03dff">음파</span></td><td>공명</td><td>울림. 공명하는 적이 받은 피해가 같은 종류의 적에게 퍼집니다.</td></tr>
+    <tr><td><span class="tag" style="color:#ff9b3d">폭발</span></td><td>—</td><td>범위 피해. 폭발 계열 효과는 이 태그만 가집니다.</td></tr>
+    <tr><td><span class="tag" style="color:#ffd27a">탄환</span></td><td>—</td><td>총기 성능. 피해, 연사, 관통, 치명타.</td></tr>
+    <tr><td><span class="tag" style="color:#6dff8a">생존</span></td><td>—</td><td>체력, 보호막, 회복, 피해 감소.</td></tr>
+  </table></div>
+
+  <details open><summary>속성 반응 (처음 터뜨리면 도감에 기록됩니다)</summary><div class="tbl" style="border:0"><table>
+    <tr><th>반응</th><th>조건과 효과</th></tr>
+    <tr><td>열충격</td><td>화상 + 빙결: 두 상태가 해제되며 큰 단일 피해.</td></tr>
+    <tr><td>산산조각</td><td>얼어붙은 적 + 폭발: 폭발 피해 2배, 파편이 튑니다.</td></tr>
+    <tr><td>과부하</td><td>감전 + 폭발: 폭발 범위 +50%.</td></tr>
+    <tr><td>화염 폭풍</td><td>화상 + 기름 웅덩이: 웅덩이 전체가 불타는 지대가 됩니다.</td></tr>
+    <tr><td>전류 확산</td><td>감전 + 물웅덩이: 웅덩이 위 모든 적이 감전됩니다.</td></tr>
+    <tr><td>전도</td><td>젖음 + 감전: 범위 안의 젖은 적 모두에게 번개가 흐릅니다.</td></tr>
+    <tr><td>부식</td><td>젖음 + 파쇄: 젖음이 사라지며 파쇄 3중첩 추가.</td></tr>
+    <tr><td>독소 연소</td><td>중독 + 화상: 남은 중독이 한꺼번에 타올라 큰 피해.</td></tr>
+    <tr><td>일식</td><td>실명 + 침식: 두 상태가 사라지며 최대 체력 비례 피해(보스는 감소).</td></tr>
+    <tr><td>불꽃 회오리</td><td>화상 + 돌풍: 회오리가 불을 감아올려 주변 적에게 화상을 퍼뜨립니다.</td></tr>
+  </table></div>
+  <p style="padding:0 0 4px;font-size:13.5px;color:var(--mu)">이 밖에 증기 화상, 전자석, 영겁, 공명 파쇄 등 반응이 더 있습니다. 모두 17종입니다.</p></details>
+</section>
+
+<section id="agents">
+  <h2>요원 14명 <small>AGENTS</small></h2>
+  <p class="sub">요원마다 스킬과 시작 무기가 다릅니다. 일부는 조건 달성이나 해금 화면에서 열립니다.</p>
+  <div class="tbl"><table>
+    <tr><th>요원</th><th>역할</th><th>스킬</th><th>효과</th></tr>
+    <tr><td>레인</td><td>돌격</td><td>과충전</td><td>5초간 연사 속도 2배 + 피해 +20%, 재장전 불필요</td></tr>
+    <tr><td>모모</td><td>기술자</td><td>포탑 설치</td><td>25초간 자동 사격 포탑(최대 3개). 포탑은 내 무기 속성을 쏩니다.</td></tr>
+    <tr><td>카이</td><td>기동</td><td>반사 베기</td><td>부채꼴로 베고 적 탄환을 3배 위력으로 되돌립니다. 베는 순간 무적.</td></tr>
+    <tr><td>세라</td><td>저격</td><td>시간 감속</td><td>5초간 주변 시간 70% 감속, 감속 중 내 피해 +30%</td></tr>
+    <tr><td>블레이즈</td><td>화염술사</td><td>용암 분출</td><td>불길 고리를 깔고 가까운 적에게 화상 2중첩</td></tr>
+    <tr><td>볼트</td><td>전격술사</td><td>천둥 폭풍</td><td>4초간 주변 적에게 낙뢰가 쏟아집니다.</td></tr>
+    <tr><td>노바</td><td>성기사</td><td>빛의 장막</td><td>3초간 무적, 주변 적 실명, 체력 15 회복</td></tr>
+    <tr><td>그림</td><td>처형자</td><td>그림자 걸음</td><td>조준 방향으로 순간이동하며 지나친 적에게 피해와 침식 3중첩</td></tr>
+    <tr><td>마린</td><td>조류술사</td><td>해일</td><td>앞쪽으로 파도를 일으켜 피해와 젖음, 지나간 자리에 물웅덩이</td></tr>
+    <tr><td>아이언</td><td>중장갑</td><td>강철 요새</td><td>4초간 받는 피해 -80%, 때린 적에게 파쇄 3중첩</td></tr>
+    <tr><td>유나</td><td>통신관</td><td>네트워크 장악</td><td>주변 기계 최대 4기를 체력과 상관없이 해킹(보스 제외), 해킹 대기 초기화</td></tr>
+    <tr><td>시우</td><td>그림자 요원</td><td>그림자 분신</td><td>5초간 적을 끄는 분신을 남기고 짧게 이동, 3초간 피해 +60%</td></tr>
+    <tr><td>하린</td><td>서리 저격</td><td>서리 파동</td><td>주변 적을 2.5초 얼리고(보스는 빙결 중첩) 3초간 이동 속도 +20%</td></tr>
+    <tr><td>도윤</td><td>방벽</td><td>방벽 전개</td><td>3초간 받는 피해 -80%, 보호막 2회, 분신 생성</td></tr>
+  </table></div>
+  <div class="tip">처음에는 <b>레인</b>(돌격, 체력 150)이나 <b>아이언</b>(중장갑, 체력 220)이 다루기 쉽습니다. 속성 요원은 자기 속성 강화가 더 자주 나옵니다.</div>
+</section>
+
+<section id="seasons">
+  <h2>시즌과 보스 <small>SEASONS</small></h2>
+  <div class="grid">
+    <div class="card"><h4 style="color:var(--cy)">시즌 1 · 캠페인</h4><p>마더보드가 폭주한 도시. 4구역을 돌파해 중앙 서버를 끕니다.</p>
+      <ul class="list"><li>폐차장 — 크러셔</li><li>냉각 시설 — 프로스트 코어</li><li>발전소 — 볼트 트윈스</li><li>중앙 서버 — 마더보드</li></ul></div>
+    <div class="card"><h4 style="color:var(--mg)">시즌 2 · 언더그라운드</h4><p>시즌 1 클리어 후. 도시 아래로 내려가 사라진 요원을 구하고 승인 키를 모읍니다. 세력 평판에 따라 결말 3종이 갈립니다.</p>
+      <ul class="list"><li>지하철 차량기지 — 레드라인</li><li>지하 수로 — 리바이어던</li><li>외곽 3구역 — 시우</li><li>지하 3층 벙커 — 센티넬</li></ul></div>
+    <div class="card"><h4 style="color:var(--ye)">시즌 3 · 신호의 끝</h4><p>시즌 2 클리어 후. 도시 바깥 황무지에서 정체불명의 신호를 쫓습니다. 상인 · 대상단 · 변경 세 세력의 평판으로 결말 3종이 갈립니다.</p>
+      <ul class="list"><li>경계 방벽 — 워든</li><li>황무지 고속도로 — 로드 리퍼</li><li>신호의 평원 — 릴레이</li><li>자오선 탑 — 메리디안 합의체</li></ul></div>
+  </div>
+  <h3>시즌별 지형 장치</h3>
+  <ul class="list">
+    <li><b>시즌 2</b> — 열차 선로, 수위 변화, 정전, 벙커 장악, 요원 구조와 동료 효과.</li>
+    <li><b>시즌 3</b> — 탐조등 경보, 모래폭풍, 낙뢰, 레이저와 전기 바닥, 대상단 물물교환. 환경 피해를 줄이는 「접지 장치」 강화가 있습니다.</li>
+  </ul>
+  <p>보스를 쓰러뜨리면 이야기 컷씬이 나옵니다. 지나간 컷씬은 도감에서 다시 볼 수 있습니다.</p>
+</section>
+
+<section id="hard">
+  <h2>난이도 <small>DIFFICULTY</small></h2>
+  <p class="sub">클리어하면 다음 오버클럭 레벨이 열립니다. 레벨이 오를수록 규칙이 누적되어 어려워집니다.</p>
+  <div class="tbl"><table>
+    <tr><th>레벨</th><th>추가되는 규칙</th></tr>
+    <tr><td>1</td><td>적 체력 +15%</td></tr><tr><td>2</td><td>엘리트 등장 빈도 증가</td></tr><tr><td>3</td><td>상점 가격 +20%</td></tr><tr><td>4</td><td>휴식 회복량 30% → 20%</td></tr>
+    <tr><td>5</td><td>보스에게 새 패턴 추가</td></tr><tr><td>6</td><td>적 피해 +25%</td></tr><tr><td>7</td><td>적 이동 속도 +10%</td></tr><tr><td>8</td><td>코인 소멸 시간 5초 → 3.5초</td></tr>
+    <tr><td>9</td><td>최대 체력 -15%</td></tr><tr><td>10</td><td>적 체력 +25% 추가, 엘리트 변이 2개</td></tr>
+  </table></div>
+  <p>별도로 <b>하드 모드</b>가 있습니다. 엘리트가 더 자주 나오고 위험한 변이가 붙습니다.</p>
+</section>
+
+<section id="faq">
+  <h2>자주 묻는 것 <small>FAQ</small></h2>
+  <details><summary>처음 해서 계속 죽어요. 어떻게 해야 하나요?</summary><div><p>한 속성에 몰아서 강화를 고르면 세트 효과가 빨리 켜집니다. 구르기는 무적이라는 점을 활용하고, 상점에서는 회복보다 강화에 먼저 쓰는 편이 유리할 때가 많습니다. 쓰러져도 코어 칩이 쌓이니 해금 화면에서 새 요원이나 강화를 열어 보세요.</p></div></details>
+  <details><summary>시즌 2와 3는 어떻게 열리나요?</summary><div><p>시즌 2는 시즌 1을 클리어하면, 시즌 3는 시즌 2를 클리어하면 열립니다. 시즌 3는 시즌 2의 결말을 이어받아 시작 컷씬과 보너스가 달라집니다.</p></div></details>
+  <details><summary>저장이 어디에 되나요?</summary><div><p>이 기기의 브라우저(또는 앱) 안에 저장됩니다. 다른 기기로 옮기려면 설정의 「저장 코드」를 쓰세요.</p></div></details>
+  <details><summary>이벤트에는 어떻게 참가하나요?</summary><div><p>무한 아레나를 플레이하고, 결과 화면의 「기록 카드 저장」으로 만든 이미지를 닉네임과 함께 보내면 됩니다. 자세한 규칙은 <a href="overclock-event.html">이벤트 공지</a>를 보세요.</p></div></details>
+  <details><summary>무기와 강화는 어떤 것이 있나요?</summary><div><p>기본 무기 외에 시즌 3까지 새 무기가 계속 추가되었고(레일건, 모래분사기, 석궁, 소이탄 발사기, 고드름 산탄총, 아크 건틀릿, 독안개 분무기 등), 강화는 90여 가지입니다. 같은 무기도 레전드 등급이 되면 고유 효과가 붙습니다.</p></div></details>
+</section>
+
+<footer>
+  <p><a class="btn" href="https://yeonny3209.github.io/overclock/" target="_blank" rel="noopener">지금 플레이 ▶</a></p>
+  <p style="margin-top:18px">OVERCLOCK · <a href="./">Yeonny Arcade</a></p>
+</footer>
+</div>
+
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.tabs button');
+  tabs.forEach(function (t) { t.addEventListener('click', function () {
+    tabs.forEach(function (x) { x.setAttribute('aria-selected', x === t ? 'true' : 'false'); });
+    ['pc', 'pad', 'touch'].forEach(function (k) { document.getElementById('t-' + k).hidden = (t.dataset.t !== k); });
+  }); });
+})();
+</script>
+</body>
+</html>
