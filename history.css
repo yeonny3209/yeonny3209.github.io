@@ -101,3 +101,13 @@ body.hs-lock{overflow:hidden}
   .hs-say{display:none}
 }
 @media (prefers-reduced-motion:reduce){.hs,.hs-panel,.hs-say,.hs-end,.hs-intro{transition:none!important}}
+
+/* 개발 기간 막대 · 비밀 말풍선 */
+.hs-span{margin-top:12px}
+.hs-bar{position:relative;height:10px;border-radius:5px;background:rgba(255,255,255,.1);overflow:hidden}
+.hs-bar i{position:absolute;top:0;bottom:0;border-radius:5px;background:linear-gradient(90deg,var(--c,#29f0ff),#fff);box-shadow:0 0 10px var(--c,#29f0ff)}
+.hs-mon{display:flex;margin-top:3px;font-size:12px;color:#8a90b8}
+.hs-mon span{text-align:left;border-left:1px solid rgba(255,255,255,.14);padding-left:4px;overflow:hidden;white-space:nowrap}
+.hs-span small{display:block;margin-top:5px;font-size:13px;color:#c9cdea}
+.hs-say.secret{border-color:#ffd25a;background:rgba(40,28,6,.82);color:#fff1c4;text-shadow:0 0 12px rgba(255,210,90,.7)}
+.hs-end .extra{margin-top:12px;font-size:15px;color:#ffe9a0}

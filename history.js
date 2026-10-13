@@ -68,6 +68,17 @@
     '마지막 탁자를 지나면, 길 끝에 불빛이 보인다.',
     '이제 거의 다 왔어요. 조금만 더 걸어가 볼까요?'
   ];
+  // 개발 기간(저장소의 첫 커밋 ~ 마지막 커밋)과 커밋 수. 2026.10.13 기준.
+  var SPANS = [['2026-06-02', '2026-08-29', 120], ['2026-07-29', '2026-08-01', 20], ['2026-08-03', '2026-08-09', 21], ['2026-09-09', '2026-09-17', 14], ['2026-09-19', '2026-10-12', 37],
+    ['2026-09-20', '2026-09-20', 4], ['2026-10-01', '2026-10-13', 34], ['2026-09-26', '2026-10-05', 15], ['2026-10-03', '2026-10-10', 7]];
+  D.forEach(function (g, i) { g.span = SPANS[i]; });
+  function dayOf(s) { return Math.round((new Date(s + 'T00:00:00') - new Date('2026-06-01T00:00:00')) / 86400000); }
+  function spanHTML(sp) {
+    var a = dayOf(sp[0]), b = dayOf(sp[1]), tot = 153, days = b - a + 1, fm = function (s) { return s.slice(0, 4) + '.' + s.slice(5, 7) + '.' + s.slice(8); };
+    var mon = [['6월', 30], ['7월', 31], ['8월', 31], ['9월', 30], ['10월', 31]].map(function (m) { return '<span style="flex:' + m[1] + '">' + m[0] + '</span>'; }).join('');
+    return '<div class="hs-span"><div class="hs-bar"><i style="left:' + (a / tot * 100).toFixed(2) + '%;width:' + Math.max(1.6, days / tot * 100).toFixed(2) + '%"></i></div><div class="hs-mon">' + mon + '</div>' +
+      '<small>' + fm(sp[0]) + (sp[0] === sp[1] ? '' : ' ~ ' + fm(sp[1])) + ' · 개발 ' + days + '일 · 커밋 ' + sp[2] + '회</small></div>';
+  }
   var N = D.length, START_X = 280, GAP = 1350, FIRST = 1150;
   function stX(i) { return FIRST + i * GAP; }
   var FIN_X = stX(N - 1) + 1500, WORLD = FIN_X + 900;
@@ -95,10 +106,18 @@
   var P = { x: START_X, y: 0, vy: 0, vx: 0, face: 1, walk: 0, air: false };
   var keys = { l: 0, r: 0, run: 0 }, auto = false, autoWait = 0;
   var active = -1, seen = {}, endShown = false, muted = false, flashT = 0;
+  var EGGS = [], found = {}, secretT = 0, idleT = 0, moon = { x: 0, y: 0, r: 40 }, meteors = [];
+  var SECRET = { cm: '여기가 이 길의 맨 처음이에요. 2026년 6월 2일, 파일 하나가 만들어지던 자리입니다.', a: '스트림릿 앱의 사이드바에는 개미굴 대전, 검투사 아레나, 리듬 게임도 숨어 있어요.', b: '블레이드 레이드의 그림과 소리는 전부 코드로 만들었어요. 이 길의 별과 가로등처럼요.', c: '오버클럭 시즌 3의 주제는 「응답하라」였어요. 여기까지 걸어온 당신이 그 대답이에요.', moon: '달은 처음부터 끝까지, 늘 같은 자리에서 길을 비춰 주고 있었어요.', wish: '유성이 지나갔어요. 소원을 빌어 보세요. 다음 게임도 무사히 완성되기를.' };
   var stars = [], parts = [], flies = [], rockets = [], sparks = [], lanterns = [];
   var els = {}, bgm = null, pre = {};
   try { muted = localStorage.getItem('hsMute') === '1'; } catch (e) { }
 
+  function buildEggs() { EGGS = [{ id: 'cm', x: 130 }, { id: 'a', x: qX(1) + 330 }, { id: 'b', x: qX(5) + 330 }, { id: 'c', x: qX(7) + 330 }]; found = {}; secretT = 0; idleT = 0; meteors = []; }
+  function secretCount() { var n = 0; for (var k in found) n++; return n; }
+  function discover(id, wx) {
+    if (found[id]) return; found[id] = 1; secretT = 6.5; els.say.textContent = '🗝 ' + SECRET[id]; els.say.setAttribute('data-q', 'secret'); els.say.classList.add('show', 'secret');
+    burst(wx, -70 * k, '#ffd25a', 22); els.sec.textContent = secretCount();
+  }
   function buildStars() {
     stars = [];
     var segs = [[START_X + 260, stX(0) - 420]];
@@ -119,26 +138,27 @@
         '<button type="button" class="hs-btn" data-a="auto" aria-pressed="false" aria-label="자동으로 걷기" title="자동으로 걷기">▶</button>' +
         '<button type="button" class="hs-btn" data-a="snd" aria-pressed="false" aria-label="소리 끄기" title="소리">🔊</button>' +
         '<button type="button" class="hs-btn" data-a="x" aria-label="역사 닫기" title="닫기">✕</button></div>' +
-      '<div class="hs-stat" aria-live="polite">✦ 추억 조각 <b>0</b> / ' + (N + 1) * 2 + '</div>' +
+      '<div class="hs-stat" aria-live="polite">✦ 추억 조각 <b>0</b> / ' + (N + 1) * 2 + ' · 🗝 비밀 <b class="hs-sec">0</b> / 6</div>' +
       '<div class="hs-panel" aria-live="polite"><div class="hs-vid"><video muted loop playsinline preload="none"></video><span class="rec">PLAY FOOTAGE</span></div><div class="hs-txt"></div></div>' +
       '<div class="hs-say"></div>' +
       '<div class="hs-help">← → 또는 A D 로 걷기 · Shift 달리기 · Space 점프 · 별을 모아 보세요</div>' +
       '<div class="hs-pad"><div class="grp"><button type="button" data-k="l" aria-label="왼쪽으로 걷기">◀</button><button type="button" data-k="r" aria-label="오른쪽으로 걷기">▶</button></div><div class="grp"><button type="button" data-k="j" aria-label="점프">⤒</button></div></div>' +
       '<div class="hs-end"><div class="k">THANK YOU FOR PLAYING</div><h2>그동안 게임들을<br>플레이해주셔서 감사합니다.</h2>' +
         '<p>첫 번째 페이지에서 일곱 군주의 탁자까지, 2026년 6월부터 10월까지의 길을 함께 걸어 주셔서 고맙습니다. 눌러 준 한 번의 플레이와 건네 준 한마디가 다음 게임을 만들었습니다. 이 길은 아직 끝나지 않았고, 다음 정거장에서 또 만나요.</p>' +
-        '<div class="sig">— 세윤 · YEONNY ARCADE</div><div class="row"><button type="button" data-a="again">처음부터 다시 걷기</button><button type="button" class="alt" data-a="x">게임 모음으로 돌아가기</button></div></div>' +
+        '<div class="extra"></div><div class="sig">— 세윤 · YEONNY ARCADE</div><div class="row"><button type="button" data-a="again">처음부터 다시 걷기</button><button type="button" class="alt" data-a="x">게임 모음으로 돌아가기</button></div></div>' +
       '<div class="hs-intro"><div><div class="k">YEONNY ARCADE</div><h2>HISTORY</h2>' +
         '<p>처음 만든 페이지부터 가장 최근의 탁자까지.<br>아홉 개의 이야기를 걸어서 지나가며, 영상과 글로 다시 만나 보세요.</p>' +
         '<div class="row"><button type="button" data-a="start">걸어서 출발하기</button></div><small>키보드 ← → · Space  /  휴대폰은 화면 아래 버튼  ·  소리가 함께 재생됩니다</small></div></div>';
     document.body.appendChild(ov);
     cv = ov.querySelector('#hsCv'); ctx = cv.getContext('2d');
     els.dots = ov.querySelector('.hs-dots'); els.panel = ov.querySelector('.hs-panel'); els.vid = ov.querySelector('.hs-vid video'); els.txt = ov.querySelector('.hs-txt');
-    els.say = ov.querySelector('.hs-say'); els.help = ov.querySelector('.hs-help'); els.end = ov.querySelector('.hs-end'); els.intro = ov.querySelector('.hs-intro');
-    els.flash = ov.querySelector('.hs-flash'); els.stat = ov.querySelector('.hs-stat b'); els.snd = ov.querySelector('[data-a=snd]'); els.auto = ov.querySelector('[data-a=auto]');
+    els.say = ov.querySelector('.hs-say'); els.help = ov.querySelector('.hs-help'); els.end = ov.querySelector('.hs-end'); els.extra = ov.querySelector('.hs-end .extra'); els.intro = ov.querySelector('.hs-intro');
+    els.flash = ov.querySelector('.hs-flash'); els.stat = ov.querySelector('.hs-stat b'); els.sec = ov.querySelector('.hs-sec'); els.snd = ov.querySelector('[data-a=snd]'); els.auto = ov.querySelector('[data-a=auto]');
     D.forEach(function (g, i) {
       var b = document.createElement('button'); b.type = 'button'; b.className = 'hs-dot'; b.style.setProperty('--c', g.color); b.textContent = g.no;
       b.setAttribute('aria-label', g.no + '번째 이야기 ' + g.title + '로 이동'); b.addEventListener('click', function () { travel(i); }); els.dots.appendChild(b);
     });
+    cv.addEventListener('pointerdown', function (e) { if (!started) return; var b = cv.getBoundingClientRect(); if (Math.hypot(e.clientX - b.left - moon.x, e.clientY - b.top - moon.y) < moon.r) discover('moon', P.x); });
     ov.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('[data-a]'); if (!a) return;
       var v = a.getAttribute('data-a');
@@ -162,7 +182,7 @@
     els.txt.scrollTop = 0;
     els.txt.innerHTML = '<span class="hs-tag">' + esc(g.tag) + '</span><h3>' + esc(g.title) + '</h3><div class="hs-en">' + esc(g.en) + '</div><p class="hs-quote">“' + esc(g.quote.replace(/[“”]/g, '')) + '”</p>' +
       g.paras.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') +
-      '<div class="hs-chips">' + g.chips.map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>' +
+      '<div class="hs-chips">' + g.chips.map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>' + spanHTML(g.span) +
       '<a class="hs-go" href="' + g.link + '" target="_blank" rel="noopener">PLAY ▶</a>';
     els.panel.querySelector('.rec').textContent = g.cap;
   }
@@ -212,7 +232,7 @@
     if (open) return;
     open = true; started = false; seen = {}; active = -1; endShown = false;
     P.x = START_X; P.y = 0; P.vy = 0; P.vx = 0; P.face = 1; keys.l = keys.r = keys.run = 0; setAuto(false);
-    buildStars(); buildFlies(); parts = []; rockets = []; sparks = []; lanterns = []; els.stat.textContent = '0';
+    buildStars(); buildFlies(); buildEggs(); els.sec.textContent = '0'; parts = []; rockets = []; sparks = []; lanterns = []; els.stat.textContent = '0';
     els.end.classList.remove('show'); els.panel.classList.remove('show'); els.say.classList.remove('show'); els.intro.classList.remove('off'); els.help.classList.remove('off');
     ov.hidden = false; document.body.classList.add('hs-lock'); resize();
     void ov.offsetWidth; ov.classList.add('open');
@@ -289,18 +309,28 @@
       else if (active >= 0 && Math.abs(P.x - stX(active)) > 360) deactivate();
     }
     // 말풍선
-    var qs = -1; if (started && active < 0) for (var q = 0; q <= N; q++) if (Math.abs(P.x - qX(q)) < 190) { qs = q; break; }
-    if (qs >= 0) { if (els.say.getAttribute('data-q') !== String(qs)) { els.say.setAttribute('data-q', qs); els.say.textContent = QUOTES[qs]; } els.say.classList.add('show'); } else els.say.classList.remove('show');
+    if (secretT > 0) { secretT -= dt; if (secretT <= 0) { els.say.classList.remove('show', 'secret'); els.say.setAttribute('data-q', ''); } }
+    else {
+      var qs = -1; if (started && active < 0) for (var q = 0; q <= N; q++) if (Math.abs(P.x - qX(q)) < 190) { qs = q; break; }
+      if (qs >= 0) { if (els.say.getAttribute('data-q') !== String(qs)) { els.say.setAttribute('data-q', qs); els.say.textContent = QUOTES[qs]; } els.say.classList.remove('secret'); els.say.classList.add('show'); } else els.say.classList.remove('show');
+    }
+    // 비밀 상자 · 유성
+    if (started) {
+      EGGS.forEach(function (e) { if (!found[e.id] && Math.abs(P.x - e.x) < 54) discover(e.id, e.x); });
+      if (active < 0 && !endShown && !P.air && Math.abs(P.vx) < 4 && !dir) idleT += dt; else idleT = 0;
+      if (idleT > 12 && !found.wish) { discover('wish', P.x); for (var m = 0; m < 3; m++) meteors.push({ x: P.x - 500 + m * 220, y: -H * 0.62 - m * 40, vx: 520 + m * 60, vy: 260, life: 1.6 }); }
+    }
+    for (var mi = meteors.length - 1; mi >= 0; mi--) { var mt = meteors[mi]; mt.life -= dt; mt.x += mt.vx * dt; mt.y += mt.vy * dt; if (mt.life <= 0) meteors.splice(mi, 1); }
     // 추억 조각
     var got = 0;
     stars.forEach(function (s) {
       if (s.got) { got++; return; }
       if (Math.abs(s.x - P.x) < 34 * k && Math.abs(s.h * k + P.y * k) < 62 * k) { s.got = true; got++; burst(s.x, -(s.h + 34) * k, '#ffe9a0', 14); }
     });
-    els.stat.textContent = got;
+    els.stat.textContent = got; var allStars = got === stars.length;
     // 엔딩
     var inEnd = P.x > FIN_X - 280;
-    if (inEnd !== endShown) { endShown = inEnd; els.end.classList.toggle('show', inEnd); if (inEnd) { for (var f = 0; f < 4; f++) launch(FIN_X + (Math.random() - .5) * 600); if (!muted && bgm) bgm.volume = 0.42; } else if (bgm) bgm.volume = 0.32; if (inEnd && auto) setAuto(false); }
+    if (inEnd !== endShown) { endShown = inEnd; els.end.classList.toggle('show', inEnd); if (inEnd) els.extra.textContent = '추억 조각 ' + got + ' / ' + stars.length + ' · 비밀 ' + secretCount() + ' / 6' + (allStars && secretCount() === 6 ? '  —  전부 찾으셨네요! 고맙습니다.' : ''); if (inEnd) { for (var f = 0; f < 4; f++) launch(FIN_X + (Math.random() - .5) * 600); if (!muted && bgm) bgm.volume = 0.42; } else if (bgm) bgm.volume = 0.32; if (inEnd && auto) setAuto(false); }
     if (inEnd && Math.random() < dt * 0.9) launch(FIN_X + (Math.random() - .5) * 900);
     if (P.x > FIN_X - 900 && Math.random() < dt * 4) lanterns.push({ x: FIN_X + (Math.random() - .5) * 1100, y: 0, vy: 30 + Math.random() * 30, ph: Math.random() * 6, s: .6 + Math.random() * .7 });
     // 입자
@@ -323,7 +353,7 @@
     for (var i = 0; i < 90; i++) { var sx = (i * 197.3) % W, sy = (i * 71.7) % (groundY * 0.7), tw = 0.35 + 0.65 * Math.abs(Math.sin(T * (0.6 + (i % 5) * 0.2) + i)); ctx.globalAlpha = tw * (1 - dawn * 0.85) * 0.9; ctx.fillStyle = '#fff'; ctx.fillRect((sx - camX * 0.03 % W + W) % W, sy, i % 7 === 0 ? 2 : 1.3, i % 7 === 0 ? 2 : 1.3); }
     ctx.globalAlpha = 1;
     // 달 / 해
-    var mx = W * 0.82 - camX * 0.01, my = groundY * 0.26 + dawn * groundY * 0.2;
+    var mx = W * 0.82 - camX * 0.01, my = groundY * 0.26 + dawn * groundY * 0.2; moon.x = mx; moon.y = my; moon.r = 44 * k;
     glow(mx, my, 150 * k, dawn > 0.4 ? '#ffd18a' : '#cfe0ff', 0.35); ctx.fillStyle = dawn > 0.4 ? '#ffe3b0' : '#f2f6ff'; ctx.beginPath(); ctx.arc(mx, my, 26 * k, 0, 6.283); ctx.fill();
     if (dawn < 0.4) { ctx.fillStyle = 'rgba(160,175,210,.35)'; ctx.beginPath(); ctx.arc(mx - 8 * k, my - 5 * k, 6 * k, 0, 6.283); ctx.arc(mx + 9 * k, my + 8 * k, 4 * k, 0, 6.283); ctx.fill(); }
     // 먼 산
@@ -359,6 +389,13 @@
     // 정거장
     for (var si = 0; si < N; si++) { var sx = stX(si) - camX; if (sx < -300 || sx > W + 300) continue; drawStation(si, sx); }
     drawFinale();
+    EGGS.forEach(function (e) {
+      var x = e.x - camX; if (x < -60 || x > W + 60) return; var y = groundY - 20 * k, on = !found[e.id], p = 0.5 + 0.5 * Math.sin(T * 3 + e.x);
+      if (on) glow(x, y - 6 * k, 46 * k, '#ffd25a', 0.3 + 0.3 * p);
+      ctx.fillStyle = on ? '#2a1d46' : '#1a1230'; ctx.strokeStyle = on ? '#ffd25a' : 'rgba(255,210,90,.35)'; ctx.lineWidth = 2; rr(x - 17 * k, y - 18 * k, 34 * k, 26 * k, 5 * k); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = on ? '#ffe9a0' : 'rgba(255,233,160,.4)'; ctx.font = '700 ' + Math.round(17 * k) + 'px "Noto Sans KR",sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(on ? '?' : '✓', x, y - 5 * k);
+    });
+    meteors.forEach(function (m) { var x = m.x - camX, y = groundY + m.y, a = Math.max(0, Math.min(1, m.life)); var g = ctx.createLinearGradient(x, y, x - m.vx * 0.25, y - m.vy * 0.25); g.addColorStop(0, 'rgba(255,255,255,' + a + ')'); g.addColorStop(1, 'rgba(255,255,255,0)'); ctx.strokeStyle = g; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - m.vx * 0.25, y - m.vy * 0.25); ctx.stroke(); });
     // 추억 조각
     stars.forEach(function (st) { if (st.got) return; var x = st.x - camX; if (x < -30 || x > W + 30) return; var y = groundY - (st.h + 34) * k + Math.sin(T * 2 + st.ph) * 5; glow(x, y, 26 * k, '#ffe9a0', 0.55); drawStar(x, y, 11 * k, T * 0.8 + st.ph); });
     drawPlayer();

@@ -39,3 +39,8 @@
   .evw-foot>span:first-child{display:none}
 }
 @media(prefers-reduced-motion:reduce){.evw{transition:none}}
+
+.pwa-open{margin-top:12px;background:linear-gradient(120deg,#6ff0c4,#29f0ff 55%,#9bb5ff);box-shadow:0 0 28px rgba(41,240,255,.35)}
+.pwa-open[hidden]{display:none}
+.pwa-tip{position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:70;max-width:min(420px,calc(100vw - 28px));padding:14px 18px;background:#140e2b;border:1.5px solid #29f0ff;color:#e8ecff;font:15px/1.7 'Noto Sans KR',sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.6);cursor:pointer}
+.pwa-tip b{color:#ffe14d}
