@@ -137,7 +137,7 @@ body.hof-lock{overflow:hidden}
 .hof-ch.in .hof-vid{animation:vidin .9s .45s cubic-bezier(.2,1.2,.3,1) backwards}
 @keyframes vidin{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
 </style>
-<link rel="stylesheet" href="games.css?v=2">
+<link rel="stylesheet" href="games.css?v=3">
 <link rel="stylesheet" href="history.css?v=3">
 <link rel="stylesheet" href="events.css?v=3">
 </head>
@@ -154,8 +154,17 @@ body.hof-lock{overflow:hidden}
 
   <h2>대표 게임</h2>
   <div class="grid games">
+    <article class="card" style="--c:#7cc7ff">
+      <span class="tag">새 게임 · 온라인 MMORPG</span>
+      <h3>검의 궤적 온라인</h3>
+      <p class="lead2">부러진 검들이 묻힌 산을 함께 오르는 쿼터뷰 3D 액션 MMORPG입니다. 콤보로 베고, 파티를 맺고, 거래하고, 겨룹니다.</p>
+      <span class="meta">회원가입이 필요하고, 무료 서버라 접속자가 많으면 거절될 수 있습니다.</span>
+      <button type="button" class="more-btn" data-game="swordtrail">상세 설명 보기 <span>플레이 영상 · 시스템 · 조작법 ▶</span></button>
+      <a class="go" href="https://sword-trail-online.3d-rpg-game.workers.dev/" target="_blank" rel="noopener">PLAY ▶</a>
+    </article>
+
     <article class="card" style="--c:#ffe14d">
-      <span class="tag">새 게임 · 오토배틀러</span>
+      <span class="tag">오토배틀러</span>
       <h3>일곱 군주의 탁자</h3>
       <p class="lead2">AI 군주 7명과 겨루는 브라우저 오토배틀러입니다. 배치는 전략, 주문은 전술.</p>
       <span class="meta">외부 이미지나 서버 없이 HTML 파일 하나로 동작합니다.</span>
@@ -550,8 +559,8 @@ body.hof-lock{overflow:hidden}
 })();
 
 </script>
-<script src="games-data.js"></script>
-<script src="games.js?v=2"></script>
+<script src="games-data.js?v=2"></script>
+<script src="games.js?v=3"></script>
 <script src="history.js?v=3"></script>
 <script src="events.js?v=1"></script>
 <script src="pwa.js?v=1"></script>

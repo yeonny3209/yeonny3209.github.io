@@ -117,3 +117,11 @@ body.gd-lock{overflow:hidden}
 .ev-go.alt{background:transparent;color:#ffe9a0;border:1.5px solid rgba(255,225,77,.6)}
 .ev-go:hover,.ev-go:focus-visible{filter:brightness(1.15);outline:none}
 @media(max-width:700px){.ev{grid-template-columns:1fr}.ev-poster{max-width:340px;margin:0 auto}}
+
+/* 검의 궤적 온라인 */
+.th-sword{--gbg:#0b1220;--gtx:#e6eefc;--gmu:#9fb3d1;--gac:#7cc7ff;--gtitle:#fff6dc;--gtfont:'Black Han Sans','Noto Sans KR';--gbul:'🗡'}
+.th-sword .gd-win{background:radial-gradient(ellipse at 20% 0,#1d3358,#0b1220 65%);border-color:#7cc7ff;border-image:linear-gradient(135deg,#7cc7ff,#e8c36a,#7cc7ff) 1}
+.th-sword .gd-title{text-shadow:0 0 18px rgba(232,195,106,.6)}
+.th-sword .gd-genre{background:#e8c36a;color:#0b1220}
+.gd.open .th-sword{animation:swordIn .75s cubic-bezier(.2,1.2,.3,1)}
+@keyframes swordIn{0%{clip-path:polygon(0 0,0 0,0 100%,0 100%);transform:translateX(-60px) skewX(-6deg)}60%{clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}100%{transform:none}}
