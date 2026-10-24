@@ -1,7 +1,7 @@
 // Yeonny Arcade 서비스 워커: 메인 페이지 자체 파일만 다룬다. 항상 네트워크를 먼저 시도하고, 끊겼을 때만 저장본을 쓴다.
 // (같은 도메인의 다른 게임 주소는 건드리지 않고 그대로 통과시킨다.)
-const CACHE = 'yeonny-hub-v3';
-const SHELL = ['./', 'index.html', 'games.css?v=4', 'history.css?v=3', 'events.css?v=3', 'games-data.js?v=3', 'games.js?v=3', 'history.js?v=3', 'events.js?v=1', 'pwa.js?v=1',
+const CACHE = 'yeonny-hub-v4';
+const SHELL = ['./', 'index.html', 'games.css?v=4', 'history.css?v=4', 'events.css?v=3', 'games-data.js?v=3', 'games.js?v=3', 'history.js?v=5', 'events.js?v=1', 'pwa.js?v=1',
   'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png',
   'media/overclock-event-poster.jpg', 'media/bladeraid-event-poster.jpg', 'overclock-event.html'];
 const OWN = new Set(SHELL.map(u => new URL(u, self.registration.scope).href));

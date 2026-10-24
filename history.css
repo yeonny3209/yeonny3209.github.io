@@ -88,9 +88,9 @@ body.hs-lock{overflow:hidden}
   .hs-txt p{font-size:15.5px;line-height:1.75}
   .hs-brand{display:none}
   .hs-top{flex-wrap:wrap;justify-content:flex-end;row-gap:6px}
-  .hs-dots{order:3;flex-basis:100%;flex:none;width:100%;gap:5px}
+  .hs-dots{order:3;flex-basis:100%;flex:none;width:100%;gap:4px}
   .hs-btn{width:36px;height:36px}
-  .hs-dot{width:28px;height:28px;font-size:12px}
+  .hs-dot{width:26px;height:26px;font-size:11px}
   .hs-stat{top:auto;left:50%;transform:translateX(-50%);bottom:max(92px,calc(env(safe-area-inset-bottom) + 82px));white-space:nowrap}
   .hs-say{bottom:calc(20% + 124px)}
 }
