@@ -133,3 +133,14 @@ body.gd-lock{overflow:hidden}
 .th-overload .gd-genre{background:linear-gradient(90deg,#29f0ff,#ff3d9a);color:#07040f}
 .gd.open .th-overload{animation:ovlIn .7s cubic-bezier(.2,1,.3,1)}
 @keyframes ovlIn{0%{transform:scale(1.08);filter:brightness(2.2) saturate(1.6);opacity:.2}100%{transform:none;filter:none;opacity:1}}
+
+/* 출석부 */
+.th-horror{--gbg:#070606;--gtx:#e8e2da;--gmu:#a79b90;--gac:#c0392b;--gtitle:#f3ece4;--gtfont:'Nanum Myeongjo','Black Han Sans';--gbul:'▪'}
+.th-horror .gd-win{background:radial-gradient(ellipse at 50% 0,#1f1210,#070606 70%);border-color:#5a1b16;box-shadow:0 0 60px #7a1b1455,inset 0 0 110px #00000099}
+.th-horror .gd-title{letter-spacing:.12em;text-shadow:0 0 14px #c0392b99}
+.th-horror .gd-genre{background:#7a1b14;color:#f3ece4}
+.th-horror .gd-play{background:#7a1b14;color:#f3ece4}
+.gd.open .th-horror{animation:horrorIn 1s steps(1,end),horrorIn2 1.2s ease-out}
+@keyframes horrorIn{0%{opacity:0}10%{opacity:1}14%{opacity:.1}22%{opacity:1}30%{opacity:.3}40%,100%{opacity:1}}
+@keyframes horrorIn2{0%{filter:brightness(.3) contrast(1.4)}100%{filter:none}}
+@media (prefers-reduced-motion:reduce){.gd.open .th-horror{animation:none}}
