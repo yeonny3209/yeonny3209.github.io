@@ -111,3 +111,5 @@ body.hs-lock{overflow:hidden}
 .hs-span small{display:block;margin-top:5px;font-size:13px;color:#c9cdea}
 .hs-say.secret{border-color:#ffd25a;background:rgba(40,28,6,.82);color:#fff1c4;text-shadow:0 0 12px rgba(255,210,90,.7)}
 .hs-end .extra{margin-top:12px;font-size:15px;color:#ffe9a0}
+
+.hs-go.off{opacity:.55;cursor:not-allowed;pointer-events:none;filter:grayscale(.7)}

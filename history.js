@@ -25,7 +25,7 @@
       paras: ['9월, 설계도 위에 탑을 세우는 게임을 만들었습니다. 회랑을 따라 밀려오는 침공체 앞에 방어탑을 한 칸씩 놓는 일은, 작은 도시를 지키는 일처럼 느껴졌습니다.',
         '방어탑 52종과 증강 1250종. 가짓수를 늘릴수록 같은 판에서도 매번 다른 이야기가 생겼습니다. 정규 웨이브 30개와 지형 네 곳, 난이도 세 단계 모두 한 판의 긴장을 위해 있습니다.'],
       chips: ['방어탑 52종', '증강 1250종', '웨이브 30', '지형 4곳'], link: 'https://yeonny3209.github.io/neon-core-defense/' },
-    { no: 5, icon: '⚔️', title: '가장 정성을 쏟은 검', en: 'BLADE RAID', tag: '2026.09 · 가장 잘 만든 게임', color: '#ff5ad1', sky: ['#06100a', '#143024'],
+    { no: 5, updating: true, icon: '⚔️', title: '가장 정성을 쏟은 검', en: 'BLADE RAID', tag: '2026.09 · 가장 잘 만든 게임', color: '#ff5ad1', sky: ['#06100a', '#143024'],
       video: 'media/bladeraid.mp4', cap: '블레이드 레이드 · 어둠의 숲 · 직접 플레이',
       quote: '그림도 소리도, 파일 없이 코드로 한 땀씩.',
       paras: ['검귀 카엘이 모닥불이 켜진 야영지에서 길을 나섭니다. 이미지도 음원도 가져오지 않고 캐릭터와 효과음을 전부 코드로 만들었고, 열 개의 던전마다 보스를 한 명씩 세웠습니다.',
@@ -197,7 +197,7 @@
     els.txt.innerHTML = '<span class="hs-tag">' + esc(g.tag) + '</span><h3>' + esc(g.title) + '</h3><div class="hs-en">' + esc(g.en) + '</div><p class="hs-quote">“' + esc(g.quote.replace(/[“”]/g, '')) + '”</p>' +
       g.paras.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') +
       '<div class="hs-chips">' + g.chips.map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>' + spanHTML(g.span) +
-      '<a class="hs-go" href="' + g.link + '" target="_blank" rel="noopener">PLAY ▶</a>';
+      (g.updating ? '<span class="hs-go off" aria-disabled="true">업데이트 중 · 잠시 플레이할 수 없어요</span>' : '<a class="hs-go" href="' + g.link + '" target="_blank" rel="noopener">PLAY ▶</a>');
     els.panel.querySelector('.rec').textContent = g.cap;
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
