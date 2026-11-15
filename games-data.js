@@ -140,6 +140,7 @@ window.GAME_DETAILS = {
     notes: ['HTML 파일 하나로 동작하는 2D 타워 디펜스입니다.', '온라인 협동전과 친선전을 지원합니다.', '효과음과 배경음을 따로 켜고 끌 수 있습니다.']
   },
   bladeraid: {
+    updating: true,
     theme: 'steel', title: '블레이드 레이드', en: 'BLADE RAID', genre: '2D 벨트스크롤 액션 RPG',
     url: 'https://yeonny3209.github.io/blade-raid/', video: 'media/bladeraid.mp4',
     tagline: '검 한 자루로 열 개의 던전을 베어 나간다. 콤보를 잇고, 스킬을 꺾고, 보스를 쓰러뜨려라.',

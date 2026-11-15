@@ -15,7 +15,7 @@
         '<div class="gd-vid"><video muted autoplay loop playsinline preload="auto" src="' + g.video + '"></video><span class="rec">PLAY FOOTAGE</span></div>' +
         '<div class="gd-head"><span class="gd-en">' + esc(g.en) + '</span><h3 class="gd-title" id="gdTitle">' + esc(g.title) + '</h3>' +
           '<span class="gd-genre">' + esc(g.genre) + '</span><p class="gd-tag">' + esc(g.tagline) + '</p>' +
-          '<a class="gd-play" href="' + g.url + '" target="_blank" rel="noopener">PLAY ▶</a></div>' +
+          (g.updating ? '<span class="gd-play off" aria-disabled="true">업데이트 중 · 잠시 플레이할 수 없어요</span>' : '<a class="gd-play" href="' + g.url + '" target="_blank" rel="noopener">PLAY ▶</a>') + '</div>' +
       '</div>' +
       '<div class="gd-stats">' + g.stats.map(function (s) { return '<div class="gd-stat"><b>' + esc(s[1]) + '</b><span>' + esc(s[0]) + '</span></div>'; }).join('') + '</div>' +
       '<div class="gd-body"><div class="gd-main">' +

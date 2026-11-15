@@ -144,3 +144,7 @@ body.gd-lock{overflow:hidden}
 @keyframes horrorIn{0%{opacity:0}10%{opacity:1}14%{opacity:.1}22%{opacity:1}30%{opacity:.3}40%,100%{opacity:1}}
 @keyframes horrorIn2{0%{filter:brightness(.3) contrast(1.4)}100%{filter:none}}
 @media (prefers-reduced-motion:reduce){.gd.open .th-horror{animation:none}}
+
+/* 업데이트 중인 게임 */
+.card .go.off,.gd-play.off{opacity:.55;cursor:not-allowed;pointer-events:none;filter:grayscale(.7);text-decoration:none}
+.card .go.off{display:inline-block}
