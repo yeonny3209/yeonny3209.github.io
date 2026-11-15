@@ -148,3 +148,4 @@ body.gd-lock{overflow:hidden}
 /* 업데이트 중인 게임 */
 .card .go.off,.gd-play.off{opacity:.55;cursor:not-allowed;pointer-events:none;filter:grayscale(.7);text-decoration:none}
 .card .go.off{display:inline-block}
+.hof-ch .go.off{opacity:.55;cursor:not-allowed;pointer-events:none;filter:grayscale(.7);display:inline-block}
